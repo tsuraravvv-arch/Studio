@@ -8,8 +8,9 @@ import type {
   OverlayRegion
 } from "../types/viewer";
 
-const expressionBase = "/assets/tsurara/expressions";
-const directionBase = "/assets/tsurara/directions";
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const expressionBase = `${publicBasePath}/assets/tsurara/expressions`;
+const directionBase = `${publicBasePath}/assets/tsurara/directions`;
 
 export const expressions: ExpressionDefinition[] = [
   {
@@ -412,3 +413,4 @@ export const directions: DirectionDefinition[] = [
     src: `${directionBase}/tsurara_right15_master.png`
   }
 ];
+
