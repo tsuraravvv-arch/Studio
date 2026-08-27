@@ -10,7 +10,9 @@ type StatusBadgeProps = {
 const directionLabel: Record<DirectionId, string> = {
   left15: "左15°",
   front: "正面",
-  right15: "右15°"
+  right15: "右15°",
+  up15: "上15°",
+  down15: "下15°"
 };
 
 export function StatusBadge({

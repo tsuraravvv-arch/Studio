@@ -51,7 +51,11 @@ const targetExpressions: ExpressionId[] = [
   "cheerful"
 ];
 
-const targetDirections: DirectionId[] = ["front", "left15", "right15"];
+const targetDirectionsByExpression: Partial<Record<ExpressionId, DirectionId[]>> = {
+  normal: ["front", "left15", "right15", "up15", "down15"]
+};
+
+const defaultTargetDirections: DirectionId[] = ["front", "left15", "right15"];
 
 const expressionLabel: Record<ExpressionId, string> = {
   normal: "通常",
@@ -71,7 +75,9 @@ const expressionLabel: Record<ExpressionId, string> = {
 const directionLabel: Record<DirectionId, string> = {
   left15: "左15°",
   front: "正面",
-  right15: "右15°"
+  right15: "右15°",
+  up15: "上15°",
+  down15: "下15°"
 };
 
 const verdictStyle: Record<CardVerdict, string> = {
@@ -166,8 +172,13 @@ function BlinkCropCard({
   imageWidth: number;
   imageHeight: number;
 }) {
-  const baseSrc = directionalExpressions[expression][direction];
-  const blinkSrc = resolveBlinkAssetSrc(expression, direction);
+  const baseSrc =
+    directionalExpressions[expression][direction] ??
+    directionalExpressions[expression].front;
+  const blinkSrc =
+    resolveBlinkAssetSrc(expression, direction) ??
+    resolveBlinkAssetSrc(expression, "front") ??
+    baseSrc;
   const region = resolveBlinkOverlayRegion(expression, direction);
   const verdict: CardVerdict = record?.verdict ?? "UNKNOWN";
   const detail = record?.detail ?? "report未生成: npm run verify:assets:json を実行してください";
@@ -275,7 +286,7 @@ export function BlinkCropCheck({ report }: BlinkCropCheckProps) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {targetExpressions.flatMap((expression) =>
-          targetDirections.map((direction) => (
+          (targetDirectionsByExpression[expression] ?? defaultTargetDirections).map((direction) => (
             <BlinkCropCard
               key={`${expression}/${direction}`}
               expression={expression}

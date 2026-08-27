@@ -12,7 +12,7 @@ export type ExpressionId =
   | "softSmile"
   | "cheerful";
 
-export type DirectionId = "left15" | "front" | "right15";
+export type DirectionId = "left15" | "front" | "right15" | "up15" | "down15";
 
 export type MouthFrameId = "closed" | "a" | "i" | "u" | "e" | "o";
 

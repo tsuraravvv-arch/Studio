@@ -75,8 +75,6 @@ type PixiRefs = {
 };
 
 const missingMessage = "画像素材を public/assets/tsurara に配置してください";
-const overlayFadeMs = 55;
-
 function drawSoftEllipse(
   graphic: Graphics,
   x: number,
@@ -192,25 +190,6 @@ function destroySprite(sprite?: Sprite) {
   if (sprite) {
     sprite.destroy();
   }
-}
-
-function fadeOutAndDestroy(sprite: Sprite) {
-  const start = performance.now();
-  const initialAlpha = sprite.alpha;
-
-  const fadeOut = () => {
-    const progress = Math.min((performance.now() - start) / overlayFadeMs, 1);
-    sprite.alpha = initialAlpha * (1 - progress);
-
-    if (progress < 1) {
-      requestAnimationFrame(fadeOut);
-      return;
-    }
-
-    destroySprite(sprite);
-  };
-
-  requestAnimationFrame(fadeOut);
 }
 
 function destroyGraphic(graphic?: Graphics) {
@@ -476,7 +455,7 @@ export function TsuraraStage({
 
       if (!eyeOverlaySrc) {
         if (refs.eyeOverlay) {
-          fadeOutAndDestroy(refs.eyeOverlay);
+          destroySprite(refs.eyeOverlay);
         }
         refs.eyeOverlay = undefined;
         return;
@@ -489,26 +468,11 @@ export function TsuraraStage({
         }
 
         const next = createRegionSprite(texture, overlayRegions.eye);
-        next.alpha = 0;
+        next.alpha = 1;
         refs.character.addChild(next);
 
         const previous = refs.eyeOverlay;
         refs.eyeOverlay = next;
-
-        const start = performance.now();
-        const fadeIn = () => {
-          if (cancelled || refs.eyeOverlay !== next) {
-            return;
-          }
-
-          next.alpha = Math.min((performance.now() - start) / overlayFadeMs, 1);
-
-          if (next.alpha < 1) {
-            requestAnimationFrame(fadeIn);
-          }
-        };
-
-        requestAnimationFrame(fadeIn);
         destroySprite(previous);
         setMissingAsset(false);
       } catch {

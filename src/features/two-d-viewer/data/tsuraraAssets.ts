@@ -81,12 +81,14 @@ export const expressionById = Object.fromEntries(
 
 export const directionalExpressions: Record<
   ExpressionId,
-  Record<DirectionId, string>
+  Partial<Record<DirectionId, string>> & Record<"front", string>
 > = {
   normal: {
     left15: `${directionBase}/tsurara_left15_master.png`,
     front: `${expressionBase}/tsurara_front_master.png`,
-    right15: `${directionBase}/tsurara_right15_master.png`
+    right15: `${directionBase}/tsurara_right15_master.png`,
+    up15: `${directionBase}/tsurara_up15_master.png`,
+    down15: `${directionBase}/tsurara_down15_master.png`
   },
   smile: {
     left15: `${directionBase}/tsurara_left15_smile.png`,
@@ -145,10 +147,12 @@ export const directionalExpressions: Record<
   }
 };
 
-export const blinkAssets: Record<DirectionId, string> = {
+export const blinkAssets: Partial<Record<DirectionId, string>> = {
   left15: `${directionBase}/tsurara_blink_left15.png`,
   front: `${expressionBase}/tsurara_blink_front.png`,
-  right15: `${directionBase}/tsurara_blink_right15.png`
+  right15: `${directionBase}/tsurara_blink_right15.png`,
+  up15: `${directionBase}/tsurara_blink_up15.png`,
+  down15: `${directionBase}/tsurara_blink_down15.png`
 };
 
 export const blinkAssetsByExpression: Partial<
@@ -189,7 +193,7 @@ export const blinkAssetsByExpression: Partial<
 export function resolveBlinkAssetSrc(
   expressionId: ExpressionId,
   directionId: DirectionId
-): string {
+): string | undefined {
   return (
     blinkAssetsByExpression[expressionId]?.[directionId] ??
     blinkAssets[directionId]
@@ -213,10 +217,10 @@ export const blinkConfig = {
 export const blinkDisabledExpressions: ExpressionId[] = [];
 
 
-export const talkMouthAssets: Record<
+export const talkMouthAssets: Partial<Record<
   DirectionId,
   Partial<Record<MouthFrameId, string>>
-> = {
+>> = {
   front: {
     a: `${expressionBase}/tsurara_mouth_a_front.png`,
     i: `${expressionBase}/tsurara_mouth_i_front.png`,
@@ -241,7 +245,7 @@ export const talkMouthAssets: Record<
 };
 
 export const overlayRegions: {
-  eye: Record<DirectionId, OverlayRegion>;
+  eye: Partial<Record<DirectionId, OverlayRegion>>;
   mouth: OverlayRegion;
 } = {
   eye: {
@@ -262,6 +266,18 @@ export const overlayRegions: {
       yRatio: 0.317,
       widthRatio: 0.1234,
       heightRatio: 0.0698
+    },
+    up15: {
+      xRatio: 0.543,
+      yRatio: 0.261,
+      widthRatio: 0.147,
+      heightRatio: 0.117
+    },
+    down15: {
+      xRatio: 0.534,
+      yRatio: 0.345,
+      widthRatio: 0.17,
+      heightRatio: 0.094
     }
   },
   mouth: {
@@ -371,11 +387,27 @@ export function resolveBlinkOverlayRegion(
 ): OverlayRegion {
   return (
     blinkOverlayRegionsByExpression[expressionId]?.[directionId] ??
-    overlayRegions.eye[directionId]
+    overlayRegions.eye[directionId] ??
+    overlayRegions.eye.front!
   );
 }
 
-export const eyeReflectionConfig = {
+export const eyeReflectionConfig: {
+  enabled: boolean;
+  baseOpacity: number;
+  sweepMinInterval: number;
+  sweepMaxInterval: number;
+  sweepDurationMin: number;
+  sweepDurationMax: number;
+  sweepMaxOpacity: number;
+  moveMinPx: number;
+  moveMaxPx: number;
+  scaleMin: number;
+  scaleMax: number;
+  disabledExpressions: ExpressionId[];
+  irises: Partial<Record<DirectionId, IrisReflectionRegion>> &
+    Record<"front", IrisReflectionRegion>;
+} = {
   enabled: true,
   baseOpacity: 0.38,
   sweepMinInterval: 900,
@@ -410,7 +442,7 @@ export const eyeReflectionConfig = {
       radiusYRatio: 0.041,
       rotation: -0.22
     }
-  } satisfies Record<DirectionId, IrisReflectionRegion>
+  } satisfies Partial<Record<DirectionId, IrisReflectionRegion>>
 } as const;
 
 export const directions: DirectionDefinition[] = [
@@ -428,6 +460,16 @@ export const directions: DirectionDefinition[] = [
     id: "right15",
     label: "右15°",
     src: `${directionBase}/tsurara_right15_master.png`
+  },
+  {
+    id: "up15",
+    label: "上15°",
+    src: `${directionBase}/tsurara_up15_master.png`
+  },
+  {
+    id: "down15",
+    label: "下15°",
+    src: `${directionBase}/tsurara_down15_master.png`
   }
 ];
 

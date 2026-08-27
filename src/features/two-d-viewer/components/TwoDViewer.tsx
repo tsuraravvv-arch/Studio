@@ -45,7 +45,21 @@ const expressionsWithoutGenericMouth: ExpressionId[] = [
   "relaxed"
 ];
 
-function targetDirectionFromMouse(mouseX: number): DirectionId {
+function targetDirectionFromMouse(
+  mouseX: number,
+  mouseY: number,
+  canUseVerticalDirection: boolean
+): DirectionId {
+  const isHorizontallyCentered = mouseX >= 0.28 && mouseX <= 0.72;
+
+  if (canUseVerticalDirection && isHorizontallyCentered && mouseY < 0.28) {
+    return "up15";
+  }
+
+  if (canUseVerticalDirection && isHorizontallyCentered && mouseY > 0.72) {
+    return "down15";
+  }
+
   if (mouseX < 0.3) {
     return "left15";
   }
@@ -64,14 +78,26 @@ export function TwoDViewer() {
   const [mouseX, setMouseX] = useState(0.5);
   const [isBlinking, setIsBlinking] = useState(false);
   const [talkFrame, setTalkFrame] = useState<MouthFrameId>("closed");
+  const [blinkHoldMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return new URLSearchParams(window.location.search).has("blink_hold");
+  });
   const blinkTimeoutRefs = useRef<number[]>([]);
   const talkTimeoutRef = useRef<number | undefined>(undefined);
   const directionTimeoutRef = useRef<number | undefined>(undefined);
   const pendingDirectionRef = useRef<DirectionId>("front");
 
   const canUseDirectionalImage = toggles.mouseFollow;
+  const canUseVerticalDirection = expressionId === "normal" && !toggles.talk;
+  const blinkAssetSrc = resolveBlinkAssetSrc(expressionId, directionId);
   const canBlink =
-    toggles.blink && !blinkDisabledExpressions.includes(expressionId);
+    toggles.blink &&
+    Boolean(blinkAssetSrc) &&
+    !blinkDisabledExpressions.includes(expressionId);
+  const effectiveIsBlinking = canBlink && (blinkHoldMode || isBlinking);
 
   const [wasDirectionalImageEnabled, setWasDirectionalImageEnabled] =
     useState(canUseDirectionalImage);
@@ -109,13 +135,21 @@ export function TwoDViewer() {
         1,
         Math.max(0, event.clientX / window.innerWidth)
       );
+      const nextMouseY = Math.min(
+        1,
+        Math.max(0, event.clientY / window.innerHeight)
+      );
       setMouseX(nextMouseX);
 
       if (!canUseDirectionalImage) {
         return;
       }
 
-      const nextTarget = targetDirectionFromMouse(nextMouseX);
+      const nextTarget = targetDirectionFromMouse(
+        nextMouseX,
+        nextMouseY,
+        canUseVerticalDirection
+      );
 
       if (nextTarget === directionId) {
         pendingDirectionRef.current = nextTarget;
@@ -139,7 +173,7 @@ export function TwoDViewer() {
       window.removeEventListener("pointermove", handlePointerMove);
       window.clearTimeout(directionTimeoutRef.current);
     };
-  }, [canUseDirectionalImage, directionId]);
+  }, [canUseDirectionalImage, canUseVerticalDirection, directionId]);
 
   useEffect(() => {
     if (!canUseDirectionalImage) {
@@ -151,7 +185,7 @@ export function TwoDViewer() {
   useEffect(() => {
     clearBlinkTimeouts();
 
-    if (!canBlink) {
+    if (!canBlink || blinkHoldMode) {
       return;
     }
 
@@ -205,7 +239,7 @@ export function TwoDViewer() {
       disposed = true;
       clearBlinkTimeouts();
     };
-  }, [canBlink]);
+  }, [blinkHoldMode, canBlink]);
 
   useEffect(() => {
     window.clearTimeout(talkTimeoutRef.current);
@@ -236,7 +270,10 @@ export function TwoDViewer() {
 
   const baseImageSrc = useMemo(() => {
     if (canUseDirectionalImage) {
-      return directionalExpressions[expressionId][directionId];
+      return (
+        directionalExpressions[expressionId][directionId] ??
+        directionalExpressions[expressionId].front
+      );
     }
 
     return expressionById[expressionId].src;
@@ -246,25 +283,24 @@ export function TwoDViewer() {
     expressionId
   ]);
 
-  const eyeOverlaySrc = isBlinking
-    ? resolveBlinkAssetSrc(expressionId, directionId)
-    : undefined;
+  const eyeOverlaySrc = effectiveIsBlinking ? blinkAssetSrc : undefined;
   const canUseGenericMouth =
     !expressionsWithoutGenericMouth.includes(expressionId);
   const mouthOverlaySrc =
     toggles.talk && canUseGenericMouth && talkFrame !== "closed"
-      ? talkMouthAssets[directionId][talkFrame]
+      ? talkMouthAssets[directionId]?.[talkFrame]
       : undefined;
   const enableEyeReflection =
     toggles.eyeReflection &&
     expressionId === "normal" &&
-    !isBlinking &&
+    !effectiveIsBlinking &&
+    Boolean(eyeReflectionConfig.irises[directionId]) &&
     !eyeReflectionConfig.disabledExpressions.includes(expressionId);
   const eyeReflection = useMemo(
     () => ({
       ...eyeReflectionConfig,
       enabled: enableEyeReflection,
-      iris: eyeReflectionConfig.irises[directionId]
+      iris: eyeReflectionConfig.irises[directionId] ?? eyeReflectionConfig.irises.front!
     }),
     [directionId, enableEyeReflection]
   );
@@ -272,6 +308,8 @@ export function TwoDViewer() {
   const handleToggle = (key: keyof ViewerToggles) => {
     if (key === "talk" && !toggles.talk) {
       window.clearTimeout(directionTimeoutRef.current);
+      pendingDirectionRef.current = "front";
+      setDirectionId("front");
       setTalkFrame("closed");
     }
 
@@ -311,7 +349,7 @@ export function TwoDViewer() {
             baseImageSrc={baseImageSrc}
             eyeReflection={eyeReflection}
             eyeOverlaySrc={eyeOverlaySrc}
-            isBlinking={isBlinking}
+            isBlinking={effectiveIsBlinking}
             mouseX={mouseX}
             mouthOverlaySrc={mouthOverlaySrc}
             overlayRegions={{
