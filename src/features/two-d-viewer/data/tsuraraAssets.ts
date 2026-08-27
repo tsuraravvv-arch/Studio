@@ -67,6 +67,11 @@ export const expressions: ExpressionDefinition[] = [
     id: "softSmile",
     label: "微笑み",
     src: `${expressionBase}/tsurara_front_softsmile.png`
+  },
+  {
+    id: "cheerful",
+    label: "楽しげ",
+    src: `${expressionBase}/tsurara_front_cheerful.png`
   }
 ];
 
@@ -132,6 +137,11 @@ export const directionalExpressions: Record<
     left15: `${directionBase}/tsurara_left15_softsmile.png`,
     front: `${expressionBase}/tsurara_front_softsmile.png`,
     right15: `${directionBase}/tsurara_right15_softsmile.png`
+  },
+  cheerful: {
+    left15: `${directionBase}/tsurara_left15_cheerful.png`,
+    front: `${expressionBase}/tsurara_front_cheerful.png`,
+    right15: `${directionBase}/tsurara_right15_cheerful.png`
   }
 };
 
@@ -142,7 +152,7 @@ export const blinkAssets: Record<DirectionId, string> = {
 };
 
 export const blinkAssetsByExpression: Partial<
-  Record<ExpressionId, Record<DirectionId, string>>
+  Record<ExpressionId, Partial<Record<DirectionId, string>>>
 > = {
   embarrassed: {
     left15: `${directionBase}/tsurara_blink_embarrassed_left15.png`,
@@ -168,6 +178,11 @@ export const blinkAssetsByExpression: Partial<
     left15: `${directionBase}/tsurara_blink_depressed_left15.png`,
     front: `${expressionBase}/tsurara_blink_depressed_front.png`,
     right15: `${directionBase}/tsurara_blink_depressed_right15.png`
+  },
+  cheerful: {
+    left15: `${directionBase}/tsurara_blink_cheerful_left15.png`,
+    front: `${expressionBase}/tsurara_blink_cheerful_front.png`,
+    right15: `${directionBase}/tsurara_blink_cheerful_right15.png`
   }
 };
 
@@ -197,10 +212,6 @@ export const blinkConfig = {
 
 export const blinkDisabledExpressions: ExpressionId[] = [];
 
-export const talkExpressions = {
-  talkA: `${expressionBase}/tsurara_front_talk_a.png`,
-  talkB: `${expressionBase}/tsurara_front_talk_b.png`
-} as const;
 
 export const talkMouthAssets: Record<
   DirectionId,
@@ -242,15 +253,15 @@ export const overlayRegions: {
     },
     front: {
       xRatio: 0.515,
-      yRatio: 0.295,
+      yRatio: 0.3135,
       widthRatio: 0.22,
-      heightRatio: 0.14
+      heightRatio: 0.0649
     },
     right15: {
-      xRatio: 0.585,
-      yRatio: 0.322,
-      widthRatio: 0.168,
-      heightRatio: 0.105
+      xRatio: 0.6308,
+      yRatio: 0.317,
+      widthRatio: 0.1234,
+      heightRatio: 0.0698
     }
   },
   mouth: {
@@ -267,9 +278,15 @@ export const blinkOverlayRegionsByExpression: Partial<
   embarrassed: {
     front: {
       xRatio: 0.536,
-      yRatio: 0.235,
+      yRatio: 0.3191,
       widthRatio: 0.148,
-      heightRatio: 0.151
+      heightRatio: 0.0622
+    },
+    right15: {
+      xRatio: 0.6409,
+      yRatio: 0.317,
+      widthRatio: 0.1105,
+      heightRatio: 0.0698
     }
   },
   smile: {
@@ -413,4 +430,5 @@ export const directions: DirectionDefinition[] = [
     src: `${directionBase}/tsurara_right15_master.png`
   }
 ];
+
 

@@ -9,7 +9,8 @@ export type ExpressionId =
   | "sleepy"
   | "depressed"
   | "relaxed"
-  | "softSmile";
+  | "softSmile"
+  | "cheerful";
 
 export type DirectionId = "left15" | "front" | "right15";
 

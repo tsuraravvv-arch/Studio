@@ -73,6 +73,29 @@ export function TwoDViewer() {
   const canBlink =
     toggles.blink && !blinkDisabledExpressions.includes(expressionId);
 
+  const [wasDirectionalImageEnabled, setWasDirectionalImageEnabled] =
+    useState(canUseDirectionalImage);
+  if (canUseDirectionalImage !== wasDirectionalImageEnabled) {
+    setWasDirectionalImageEnabled(canUseDirectionalImage);
+    if (!canUseDirectionalImage) {
+      setDirectionId("front");
+    }
+  }
+
+  const [prevCanBlink, setPrevCanBlink] = useState(canBlink);
+  if (canBlink !== prevCanBlink) {
+    setPrevCanBlink(canBlink);
+    setIsBlinking(false);
+  }
+
+  const [wasTalkEnabled, setWasTalkEnabled] = useState(toggles.talk);
+  if (toggles.talk !== wasTalkEnabled) {
+    setWasTalkEnabled(toggles.talk);
+    if (!toggles.talk) {
+      setTalkFrame("closed");
+    }
+  }
+
   const clearBlinkTimeouts = () => {
     blinkTimeoutRefs.current.forEach((timeoutId) => {
       window.clearTimeout(timeoutId);
@@ -122,13 +145,11 @@ export function TwoDViewer() {
     if (!canUseDirectionalImage) {
       window.clearTimeout(directionTimeoutRef.current);
       pendingDirectionRef.current = "front";
-      setDirectionId("front");
     }
   }, [canUseDirectionalImage]);
 
   useEffect(() => {
     clearBlinkTimeouts();
-    setIsBlinking(false);
 
     if (!canBlink) {
       return;
@@ -190,7 +211,6 @@ export function TwoDViewer() {
     window.clearTimeout(talkTimeoutRef.current);
 
     if (!toggles.talk) {
-      setTalkFrame("closed");
       return;
     }
 
@@ -209,7 +229,6 @@ export function TwoDViewer() {
       }, randomBetween(190, 360));
     };
 
-    setTalkFrame((current) => pickNextTalkFrame(current));
     scheduleTalk();
 
     return () => window.clearTimeout(talkTimeoutRef.current);
@@ -323,4 +342,5 @@ export function TwoDViewer() {
     </main>
   );
 }
+
 

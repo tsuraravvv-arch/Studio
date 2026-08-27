@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verify:assets": "node scripts/verify-tsurara-assets.mjs",
+    "verify:assets:json": "node scripts/verify-tsurara-assets.mjs --out public/assets/tsurara/reports/blink-crop-report.json",
+    "import:pack": "node scripts/import-tsurara-pack.mjs",
+    "check": "npm run verify:assets:json && npm run lint && npm run build"
   },
   "dependencies": {
     "next": "16.3.2",

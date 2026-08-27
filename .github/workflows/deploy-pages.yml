@@ -27,6 +27,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Generate blink crop report
+        run: npm run verify:assets:json
       - name: Build
         run: npm run build
         env:
