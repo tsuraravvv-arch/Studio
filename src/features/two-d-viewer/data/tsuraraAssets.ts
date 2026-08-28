@@ -88,7 +88,11 @@ export const directionalExpressions: Record<
     front: `${expressionBase}/tsurara_front_master.png`,
     right15: `${directionBase}/tsurara_right15_master.png`,
     up15: `${directionBase}/tsurara_up15_master.png`,
-    down15: `${directionBase}/tsurara_down15_master.png`
+    down15: `${directionBase}/tsurara_down15_master.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_master.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_master.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_master.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_master.png`
   },
   smile: {
     left15: `${directionBase}/tsurara_left15_smile.png`,
@@ -152,8 +156,19 @@ export const blinkAssets: Partial<Record<DirectionId, string>> = {
   front: `${expressionBase}/tsurara_blink_front.png`,
   right15: `${directionBase}/tsurara_blink_right15.png`,
   up15: `${directionBase}/tsurara_blink_up15.png`,
-  down15: `${directionBase}/tsurara_blink_down15.png`
+  down15: `${directionBase}/tsurara_blink_down15.png`,
+  upLeft15: `${directionBase}/tsurara_blink_up_left15.png`,
+  upRight15: `${directionBase}/tsurara_blink_up_right15.png`,
+  downLeft15: `${directionBase}/tsurara_blink_down_left15.png`,
+  downRight15: `${directionBase}/tsurara_blink_down_right15.png`
 };
+
+export const fullFrameBlinkDirections: DirectionId[] = [
+  "upLeft15",
+  "upRight15",
+  "downLeft15",
+  "downRight15"
+];
 
 export const blinkAssetsByExpression: Partial<
   Record<ExpressionId, Partial<Record<DirectionId, string>>>
@@ -278,6 +293,30 @@ export const overlayRegions: {
       yRatio: 0.345,
       widthRatio: 0.17,
       heightRatio: 0.094
+    },
+    upLeft15: {
+      xRatio: 0.56,
+      yRatio: 0.294,
+      widthRatio: 0.17,
+      heightRatio: 0.096
+    },
+    upRight15: {
+      xRatio: 0.587,
+      yRatio: 0.287,
+      widthRatio: 0.15,
+      heightRatio: 0.09
+    },
+    downLeft15: {
+      xRatio: 0.555,
+      yRatio: 0.328,
+      widthRatio: 0.155,
+      heightRatio: 0.085
+    },
+    downRight15: {
+      xRatio: 0.572,
+      yRatio: 0.329,
+      widthRatio: 0.145,
+      heightRatio: 0.084
     }
   },
   mouth: {
@@ -467,9 +506,29 @@ export const directions: DirectionDefinition[] = [
     src: `${directionBase}/tsurara_up15_master.png`
   },
   {
+    id: "upLeft15",
+    label: "左上15°",
+    src: `${directionBase}/tsurara_up_left15_master.png`
+  },
+  {
+    id: "upRight15",
+    label: "右上15°",
+    src: `${directionBase}/tsurara_up_right15_master.png`
+  },
+  {
     id: "down15",
     label: "下15°",
     src: `${directionBase}/tsurara_down15_master.png`
+  },
+  {
+    id: "downLeft15",
+    label: "左下15°",
+    src: `${directionBase}/tsurara_down_left15_master.png`
+  },
+  {
+    id: "downRight15",
+    label: "右下15°",
+    src: `${directionBase}/tsurara_down_right15_master.png`
   }
 ];
 

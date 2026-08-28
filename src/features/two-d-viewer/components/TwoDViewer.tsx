@@ -7,6 +7,7 @@ import {
   directionalExpressions,
   eyeReflectionConfig,
   expressionById,
+  fullFrameBlinkDirections,
   overlayRegions,
   resolveBlinkAssetSrc,
   resolveBlinkOverlayRegion,
@@ -51,20 +52,42 @@ function targetDirectionFromMouse(
   canUseVerticalDirection: boolean
 ): DirectionId {
   const isHorizontallyCentered = mouseX >= 0.28 && mouseX <= 0.72;
+  const isLookingLeft = mouseX < 0.3;
+  const isLookingRight = mouseX > 0.7;
 
-  if (canUseVerticalDirection && isHorizontallyCentered && mouseY < 0.28) {
-    return "up15";
+  if (canUseVerticalDirection && mouseY < 0.28) {
+    if (isLookingLeft) {
+      return "upLeft15";
+    }
+
+    if (isLookingRight) {
+      return "upRight15";
+    }
+
+    if (isHorizontallyCentered) {
+      return "up15";
+    }
   }
 
-  if (canUseVerticalDirection && isHorizontallyCentered && mouseY > 0.72) {
-    return "down15";
+  if (canUseVerticalDirection && mouseY > 0.72) {
+    if (isLookingLeft) {
+      return "downLeft15";
+    }
+
+    if (isLookingRight) {
+      return "downRight15";
+    }
+
+    if (isHorizontallyCentered) {
+      return "down15";
+    }
   }
 
-  if (mouseX < 0.3) {
+  if (isLookingLeft) {
     return "left15";
   }
 
-  if (mouseX > 0.7) {
+  if (isLookingRight) {
     return "right15";
   }
 
@@ -268,7 +291,17 @@ export function TwoDViewer() {
     return () => window.clearTimeout(talkTimeoutRef.current);
   }, [toggles.talk]);
 
+  const shouldUseFullFrameBlink =
+    effectiveIsBlinking &&
+    expressionId === "normal" &&
+    fullFrameBlinkDirections.includes(directionId) &&
+    Boolean(blinkAssetSrc);
+
   const baseImageSrc = useMemo(() => {
+    if (shouldUseFullFrameBlink && blinkAssetSrc) {
+      return blinkAssetSrc;
+    }
+
     if (canUseDirectionalImage) {
       return (
         directionalExpressions[expressionId][directionId] ??
@@ -278,12 +311,15 @@ export function TwoDViewer() {
 
     return expressionById[expressionId].src;
   }, [
+    blinkAssetSrc,
     canUseDirectionalImage,
     directionId,
-    expressionId
+    expressionId,
+    shouldUseFullFrameBlink
   ]);
 
-  const eyeOverlaySrc = effectiveIsBlinking ? blinkAssetSrc : undefined;
+  const eyeOverlaySrc =
+    effectiveIsBlinking && !shouldUseFullFrameBlink ? blinkAssetSrc : undefined;
   const canUseGenericMouth =
     !expressionsWithoutGenericMouth.includes(expressionId);
   const mouthOverlaySrc =

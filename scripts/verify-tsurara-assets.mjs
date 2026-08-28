@@ -214,7 +214,7 @@ function parseDirectionalRecord(recordName) {
     const expression = exprMatch[1];
     const body = exprMatch[2];
     const directions = {};
-    for (const dirMatch of body.matchAll(/(left15|front|right15|up15|down15):\s*`\$\{(expressionBase|directionBase)\}\/([A-Za-z0-9_.\-]+\.png)`/g)) {
+    for (const dirMatch of body.matchAll(/(left15|front|right15|up15|down15|upLeft15|upRight15|downLeft15|downRight15):\s*`\$\{(expressionBase|directionBase)\}\/([A-Za-z0-9_.\-]+\.png)`/g)) {
       directions[dirMatch[1]] = {
         kind: dirMatch[2] === "expressionBase" ? "expression" : "direction",
         fileName: dirMatch[3]
@@ -233,7 +233,7 @@ function parseBlinkOverrides() {
 function parseDefaultBlinkAssets() {
   const block = extractExportBlock("blinkAssets");
   const directions = {};
-  for (const dirMatch of block.matchAll(/(left15|front|right15|up15|down15):\s*`\$\{(expressionBase|directionBase)\}\/([A-Za-z0-9_.\-]+\.png)`/g)) {
+  for (const dirMatch of block.matchAll(/(left15|front|right15|up15|down15|upLeft15|upRight15|downLeft15|downRight15):\s*`\$\{(expressionBase|directionBase)\}\/([A-Za-z0-9_.\-]+\.png)`/g)) {
     directions[dirMatch[1]] = {
       kind: dirMatch[2] === "expressionBase" ? "expression" : "direction",
       fileName: dirMatch[3]
@@ -243,7 +243,7 @@ function parseDefaultBlinkAssets() {
 }
 
 const regionEntryPattern =
-  /(left15|front|right15|up15|down15)\s*:\s*\{\s*xRatio:\s*([\d.]+),\s*yRatio:\s*([\d.]+),\s*widthRatio:\s*([\d.]+),\s*heightRatio:\s*([\d.]+)\s*\}/g;
+  /(left15|front|right15|up15|down15|upLeft15|upRight15|downLeft15|downRight15)\s*:\s*\{\s*xRatio:\s*([\d.]+),\s*yRatio:\s*([\d.]+),\s*widthRatio:\s*([\d.]+),\s*heightRatio:\s*([\d.]+)\s*\}/g;
 
 function collectRegionEntries(text) {
   const regions = {};

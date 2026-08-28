@@ -77,7 +77,11 @@ const directionLabel: Record<DirectionId, string> = {
   front: "正面",
   right15: "右15°",
   up15: "上15°",
-  down15: "下15°"
+  down15: "下15°",
+  upLeft15: "左上15°",
+  upRight15: "右上15°",
+  downLeft15: "左下15°",
+  downRight15: "右下15°"
 };
 
 const verdictStyle: Record<CardVerdict, string> = {
