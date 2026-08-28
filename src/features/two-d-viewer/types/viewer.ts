@@ -49,6 +49,8 @@ export type OverlayRegion = {
   yRatio: number;
   widthRatio: number;
   heightRatio: number;
+  xOffsetRatio?: number;
+  yOffsetRatio?: number;
 };
 
 export type IrisReflectionRegion = {

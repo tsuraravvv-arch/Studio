@@ -158,8 +158,9 @@ function createRegionSprite(texture: Texture, region: OverlayRegion) {
   });
   const sprite = new Sprite(croppedTexture);
 
-  sprite.x = frame.x;
-  sprite.y = frame.y;
+  sprite.x = frame.x + Math.round(texture.width * (region.xOffsetRatio ?? 0));
+  sprite.y =
+    frame.y + Math.round(texture.height * (region.yOffsetRatio ?? 0));
 
   return sprite;
 }

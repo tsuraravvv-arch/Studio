@@ -49,18 +49,20 @@ const expressionsWithoutGenericMouth: ExpressionId[] = [
 function targetDirectionFromMouse(
   mouseX: number,
   mouseY: number,
-  canUseVerticalDirection: boolean
+  availableDirections: Partial<Record<DirectionId, string>>
 ): DirectionId {
   const isHorizontallyCentered = mouseX >= 0.28 && mouseX <= 0.72;
   const isLookingLeft = mouseX < 0.3;
   const isLookingRight = mouseX > 0.7;
+  const canUseUp = Boolean(availableDirections.up15);
+  const canUseDown = Boolean(availableDirections.down15);
 
-  if (canUseVerticalDirection && mouseY < 0.28) {
-    if (isLookingLeft) {
+  if (canUseUp && mouseY < 0.28) {
+    if (isLookingLeft && availableDirections.upLeft15) {
       return "upLeft15";
     }
 
-    if (isLookingRight) {
+    if (isLookingRight && availableDirections.upRight15) {
       return "upRight15";
     }
 
@@ -69,12 +71,12 @@ function targetDirectionFromMouse(
     }
   }
 
-  if (canUseVerticalDirection && mouseY > 0.72) {
-    if (isLookingLeft) {
+  if (canUseDown && mouseY > 0.72) {
+    if (isLookingLeft && availableDirections.downLeft15) {
       return "downLeft15";
     }
 
-    if (isLookingRight) {
+    if (isLookingRight && availableDirections.downRight15) {
       return "downRight15";
     }
 
@@ -114,7 +116,7 @@ export function TwoDViewer() {
   const pendingDirectionRef = useRef<DirectionId>("front");
 
   const canUseDirectionalImage = toggles.mouseFollow;
-  const canUseVerticalDirection = expressionId === "normal" && !toggles.talk;
+  const availableDirectionalImages = directionalExpressions[expressionId];
   const blinkAssetSrc = resolveBlinkAssetSrc(expressionId, directionId);
   const canBlink =
     toggles.blink &&
@@ -171,7 +173,7 @@ export function TwoDViewer() {
       const nextTarget = targetDirectionFromMouse(
         nextMouseX,
         nextMouseY,
-        canUseVerticalDirection
+        toggles.talk ? { front: availableDirectionalImages.front } : availableDirectionalImages
       );
 
       if (nextTarget === directionId) {
@@ -196,7 +198,7 @@ export function TwoDViewer() {
       window.removeEventListener("pointermove", handlePointerMove);
       window.clearTimeout(directionTimeoutRef.current);
     };
-  }, [canUseDirectionalImage, canUseVerticalDirection, directionId]);
+  }, [availableDirectionalImages, canUseDirectionalImage, directionId, toggles.talk]);
 
   useEffect(() => {
     if (!canUseDirectionalImage) {
@@ -293,8 +295,12 @@ export function TwoDViewer() {
 
   const shouldUseFullFrameBlink =
     effectiveIsBlinking &&
-    expressionId === "normal" &&
-    fullFrameBlinkDirections.includes(directionId) &&
+    ((expressionId === "normal" &&
+      fullFrameBlinkDirections.includes(directionId)) ||
+      (expressionId === "embarrassed" &&
+        (directionId === "up15" || directionId === "down15")) ||
+      (expressionId === "jitome" && directionId === "down15") ||
+      (expressionId === "surprised" && directionId === "up15")) &&
     Boolean(blinkAssetSrc);
 
   const baseImageSrc = useMemo(() => {

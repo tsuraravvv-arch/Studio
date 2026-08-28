@@ -97,57 +97,79 @@ export const directionalExpressions: Record<
   smile: {
     left15: `${directionBase}/tsurara_left15_smile.png`,
     front: `${expressionBase}/tsurara_front_smile.png`,
-    right15: `${directionBase}/tsurara_right15_smile.png`
+    right15: `${directionBase}/tsurara_right15_smile.png`,
+    up15: `${directionBase}/tsurara_up15_smile.png`,
+    down15: `${directionBase}/tsurara_down15_smile.png`
   },
   embarrassed: {
     left15: `${directionBase}/tsurara_left15_embarrassed.png`,
     front: `${expressionBase}/tsurara_front_embarrassed.png`,
-    right15: `${directionBase}/tsurara_right15_embarrassed.png`
+    right15: `${directionBase}/tsurara_right15_embarrassed.png`,
+    up15: `${directionBase}/tsurara_up15_embarrassed.png`,
+    down15: `${directionBase}/tsurara_down15_embarrassed.png`
   },
   troubled: {
     left15: `${directionBase}/tsurara_left15_troubled.png`,
     front: `${expressionBase}/tsurara_front_troubled.png`,
-    right15: `${directionBase}/tsurara_right15_troubled.png`
+    right15: `${directionBase}/tsurara_right15_troubled.png`,
+    up15: `${directionBase}/tsurara_up15_troubled.png`,
+    down15: `${directionBase}/tsurara_down15_troubled.png`
   },
   jitome: {
     left15: `${directionBase}/tsurara_left15_slyeyes.png`,
     front: `${expressionBase}/tsurara_front_slyeyes.png`,
-    right15: `${directionBase}/tsurara_right15_slyeyes.png`
+    right15: `${directionBase}/tsurara_right15_slyeyes.png`,
+    up15: `${directionBase}/tsurara_up15_slyeyes.png`,
+    down15: `${directionBase}/tsurara_down15_slyeyes.png`
   },
   surprised: {
     left15: `${directionBase}/tsurara_surprised_left15.png`,
     front: `${expressionBase}/tsurara_surprised_front.png`,
-    right15: `${directionBase}/tsurara_surprised_right15.png`
+    right15: `${directionBase}/tsurara_surprised_right15.png`,
+    up15: `${directionBase}/tsurara_surprised_up15.png`,
+    down15: `${directionBase}/tsurara_surprised_down15.png`
   },
   exasperated: {
     left15: `${directionBase}/tsurara_exasperated_left15.png`,
     front: `${expressionBase}/tsurara_exasperated_front.png`,
-    right15: `${directionBase}/tsurara_exasperated_right15.png`
+    right15: `${directionBase}/tsurara_exasperated_right15.png`,
+    up15: `${directionBase}/tsurara_exasperated_up15.png`,
+    down15: `${directionBase}/tsurara_exasperated_down15.png`
   },
   sleepy: {
     left15: `${directionBase}/tsurara_sleepy_left15.png`,
     front: `${expressionBase}/tsurara_sleepy_front.png`,
-    right15: `${directionBase}/tsurara_sleepy_right15.png`
+    right15: `${directionBase}/tsurara_sleepy_right15.png`,
+    up15: `${directionBase}/tsurara_sleepy_up15.png`,
+    down15: `${directionBase}/tsurara_sleepy_down15.png`
   },
   depressed: {
     left15: `${directionBase}/tsurara_left15_dejected.png`,
     front: `${expressionBase}/tsurara_front_dejected.png`,
-    right15: `${directionBase}/tsurara_right15_dejected.png`
+    right15: `${directionBase}/tsurara_right15_dejected.png`,
+    up15: `${directionBase}/tsurara_up15_dejected.png`,
+    down15: `${directionBase}/tsurara_down15_dejected.png`
   },
   relaxed: {
     left15: `${directionBase}/tsurara_left15_relaxed.png`,
     front: `${expressionBase}/tsurara_front_relaxed.png`,
-    right15: `${directionBase}/tsurara_right15_relaxed.png`
+    right15: `${directionBase}/tsurara_right15_relaxed.png`,
+    up15: `${directionBase}/tsurara_up15_relaxed.png`,
+    down15: `${directionBase}/tsurara_down15_relaxed.png`
   },
   softSmile: {
     left15: `${directionBase}/tsurara_left15_softsmile.png`,
     front: `${expressionBase}/tsurara_front_softsmile.png`,
-    right15: `${directionBase}/tsurara_right15_softsmile.png`
+    right15: `${directionBase}/tsurara_right15_softsmile.png`,
+    up15: `${directionBase}/tsurara_up15_softsmile.png`,
+    down15: `${directionBase}/tsurara_down15_softsmile.png`
   },
   cheerful: {
     left15: `${directionBase}/tsurara_left15_cheerful.png`,
     front: `${expressionBase}/tsurara_front_cheerful.png`,
-    right15: `${directionBase}/tsurara_right15_cheerful.png`
+    right15: `${directionBase}/tsurara_right15_cheerful.png`,
+    up15: `${directionBase}/tsurara_up15_cheerful.png`,
+    down15: `${directionBase}/tsurara_down15_cheerful.png`
   }
 };
 
@@ -176,7 +198,9 @@ export const blinkAssetsByExpression: Partial<
   embarrassed: {
     left15: `${directionBase}/tsurara_blink_embarrassed_left15.png`,
     front: `${expressionBase}/tsurara_blink_embarrassed_front.png`,
-    right15: `${directionBase}/tsurara_blink_embarrassed_right15.png`
+    right15: `${directionBase}/tsurara_blink_embarrassed_right15.png`,
+    up15: `${directionBase}/tsurara_blink_embarrassed_up15.png`,
+    down15: `${directionBase}/tsurara_blink_embarrassed_down15.png`
   },
   smile: {
     left15: `${directionBase}/tsurara_blink_smile_left15.png`,
@@ -191,7 +215,8 @@ export const blinkAssetsByExpression: Partial<
   surprised: {
     left15: `${directionBase}/tsurara_blink_surprised_left15.png`,
     front: `${expressionBase}/tsurara_blink_surprised_front.png`,
-    right15: `${directionBase}/tsurara_blink_surprised_right15.png`
+    right15: `${directionBase}/tsurara_blink_surprised_right15.png`,
+    up15: `${directionBase}/tsurara_blink_surprised_up15.png`
   },
   depressed: {
     left15: `${directionBase}/tsurara_blink_depressed_left15.png`,
@@ -342,6 +367,18 @@ export const blinkOverlayRegionsByExpression: Partial<
       yRatio: 0.317,
       widthRatio: 0.1105,
       heightRatio: 0.0698
+    },
+    up15: {
+      xRatio: 0.558,
+      yRatio: 0.302,
+      widthRatio: 0.123,
+      heightRatio: 0.078
+    },
+    down15: {
+      xRatio: 0.558,
+      yRatio: 0.392,
+      widthRatio: 0.123,
+      heightRatio: 0.055
     }
   },
   smile: {
@@ -376,6 +413,16 @@ export const blinkOverlayRegionsByExpression: Partial<
       yRatio: 0.3149,
       widthRatio: 0.116,
       heightRatio: 0.0787
+    }
+  },
+  jitome: {
+    down15: {
+      xRatio: 0.572,
+      yRatio: 0.392,
+      widthRatio: 0.085,
+      heightRatio: 0.036,
+      xOffsetRatio: -0.025,
+      yOffsetRatio: 0.006
     }
   },
   surprised: {
