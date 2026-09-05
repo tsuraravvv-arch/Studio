@@ -35,9 +35,9 @@ export function ImageUploader({
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="xcs-upload flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
+        <span className="xcs-step flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
           1
         </span>
         <h2 className="text-base font-extrabold text-[#1f3442]">

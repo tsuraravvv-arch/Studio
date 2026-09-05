@@ -163,10 +163,10 @@ export function ImageEditor({
   const showQualityWarning = Boolean(image) && transform.scale > 1.001;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="xcs-editor flex flex-col gap-3">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
+          <span className="xcs-step flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
             2
           </span>
           <h2 className="text-base font-extrabold text-[#1f3442]">

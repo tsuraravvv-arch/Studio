@@ -11,7 +11,7 @@ export function PostingGuide({ splitCount }: PostingGuideProps) {
   );
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+    <section className="xcs-posting mx-auto w-full max-w-6xl px-6 pb-16">
       <div className="flex flex-col gap-6 rounded-2xl border border-[#e3edf0] bg-gradient-to-br from-white to-[#eef8fb] p-6 sm:flex-row sm:items-center sm:gap-10 sm:p-8">
         <div className="flex-1">
           <h2 className="text-base font-extrabold text-[#1f3442]">

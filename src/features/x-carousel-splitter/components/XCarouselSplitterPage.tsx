@@ -16,6 +16,7 @@ import type {
   OutputPanel,
   SplitCount
 } from "../types";
+import "./splitter-design.css";
 import { Hero } from "./Hero";
 import { ImageEditor } from "./ImageEditor";
 import { ImageUploader } from "./ImageUploader";
@@ -206,13 +207,13 @@ export function XCarouselSplitterPage() {
   }, [loadedImage, transform, splitCount]);
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#fbfdfe] text-[#243241]">
+    <main className="xcs-page flex min-h-screen flex-col bg-[#fbfdfe] text-[#243241]">
       <SiteHeader />
       <Hero />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-10">
-        <div className="rounded-3xl border border-[#e3edf0] bg-white p-6 shadow-[0_20px_60px_rgba(59,88,98,0.10)] sm:p-8">
-          <div className="grid gap-8 lg:grid-cols-10">
+      <section className="xcs-workspace mx-auto w-full max-w-6xl px-6 py-10">
+        <div className="xcs-workspace-card rounded-3xl border border-[#e3edf0] bg-white p-6 shadow-[0_20px_60px_rgba(59,88,98,0.10)] sm:p-8">
+          <div className="xcs-workspace-grid grid gap-8 lg:grid-cols-10">
             <div className="flex flex-col gap-8 lg:col-span-7">
               <ImageUploader
                 error={uploadError}
@@ -251,7 +252,7 @@ export function XCarouselSplitterPage() {
         </div>
       </section>
 
-      <div className="pb-10">
+      <div className="xcs-result-wrap pb-10">
         <OutputPreview panels={panels} splitCount={splitCount} />
       </div>
 

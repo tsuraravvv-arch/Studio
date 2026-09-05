@@ -29,9 +29,9 @@ export function SplitControls({
   const panelWidth = OUTPUT_WIDTH / splitCount;
 
   return (
-    <div className="flex h-full flex-col gap-6 rounded-2xl border border-[#e3edf0] bg-[#f9fcfd] p-5">
+    <div className="xcs-controls flex h-full flex-col gap-6 rounded-2xl border border-[#e3edf0] bg-[#f9fcfd] p-5">
       <div className="flex items-center gap-2">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
+        <span className="xcs-step flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
           3
         </span>
         <h2 className="text-base font-extrabold text-[#1f3442]">分割設定</h2>
@@ -47,6 +47,9 @@ export function SplitControls({
               onClick={() => onSplitCountChange(option.value)}
               type="button"
             >
+              <span className="xcs-split-diagram" aria-hidden="true">
+                {Array.from({ length: option.value }, (_, index) => <i key={index} />)}
+              </span>
               <span className="block text-sm font-extrabold">{option.label}</span>
               <span className="block text-[11px] font-normal opacity-80">
                 {option.grid}
@@ -56,7 +59,7 @@ export function SplitControls({
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5 text-xs text-[#5c7078]">
+      <div className="xcs-output-info flex flex-col gap-1.5 text-xs text-[#5c7078]">
         <div className="flex items-center justify-between">
           <span className="font-bold">出力サイズ（1枚あたり）</span>
           <span>

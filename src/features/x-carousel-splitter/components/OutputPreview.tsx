@@ -15,11 +15,11 @@ export function OutputPreview({ panels, splitCount }: OutputPreviewProps) {
   }
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-6">
+    <section className="xcs-results mx-auto w-full max-w-6xl px-6">
       <div className="rounded-3xl border border-[#e3edf0] bg-white p-6 shadow-[0_20px_60px_rgba(59,88,98,0.10)] sm:p-8">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
+            <span className="xcs-step flex h-6 w-6 items-center justify-center rounded-full bg-[#26677a] text-xs font-extrabold text-white">
               4
             </span>
             <h2 className="text-base font-extrabold text-[#1f3442]">
@@ -76,7 +76,7 @@ export function OutputPreview({ panels, splitCount }: OutputPreviewProps) {
             ))}
           </div>
 
-          <div className="flex w-full flex-col items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-[#f2fafc] to-[#eef0fb] p-5 text-center lg:w-48">
+          <div className="xcs-result-note flex w-full flex-col items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-[#f2fafc] to-[#eef0fb] p-5 text-center lg:w-48">
             <SnowflakeIcon className="h-6 w-6 text-[#9fd2e2]" />
             <p className="text-xs font-bold leading-relaxed text-[#4a5c66]">
               きれいに切り出せたよ！
@@ -84,7 +84,6 @@ export function OutputPreview({ panels, splitCount }: OutputPreviewProps) {
               あとは X に投稿するだけ。
             </p>
             <StarIcon className="h-5 w-5 text-[#c9bdf0]" />
-            <p className="text-[10px] text-[#8493a0]">ミニつらら登場予定</p>
           </div>
         </div>
       </div>
