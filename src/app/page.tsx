@@ -6,6 +6,12 @@ const tools = [
     description: "表情、まばたき、口パク、左右15度の向き差分を確認するための制作ビューアです。",
     href: "/tools/two-d-viewer",
     status: "MVP"
+  },
+  {
+    title: "X Carousel Splitter",
+    description: "横長画像を、Xのカルーセル投稿向けに2枚・4枚へブラウザ内だけで分割できるツールです。",
+    href: "/tools/x-carousel-splitter",
+    status: "公開中"
   }
 ];
 
