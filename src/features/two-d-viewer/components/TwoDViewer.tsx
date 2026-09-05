@@ -7,7 +7,6 @@ import {
   directionalExpressions,
   eyeReflectionConfig,
   expressionById,
-  fullFrameBlinkDirections,
   overlayRegions,
   resolveBlinkAssetSrc,
   resolveBlinkOverlayRegion,
@@ -295,12 +294,23 @@ export function TwoDViewer() {
 
   const shouldUseFullFrameBlink =
     effectiveIsBlinking &&
-    ((expressionId === "normal" &&
-      fullFrameBlinkDirections.includes(directionId)) ||
-      (expressionId === "embarrassed" &&
-        (directionId === "up15" || directionId === "down15")) ||
-      (expressionId === "jitome" && directionId === "down15") ||
-      (expressionId === "surprised" && directionId === "up15")) &&
+    ((expressionId === "normal" && directionId === "downLeft15") ||
+      (expressionId === "softSmile" &&
+        (directionId === "upLeft15" ||
+          directionId === "upRight15" ||
+          directionId === "downLeft15" ||
+          directionId === "downRight15")) ||
+      (expressionId === "exasperated" &&
+        (directionId === "upLeft15" ||
+          directionId === "upRight15" ||
+          directionId === "downLeft15" ||
+          directionId === "downRight15")) ||
+      (expressionId === "surprised" &&
+        (directionId === "up15" ||
+          directionId === "upLeft15" ||
+          directionId === "upRight15" ||
+          directionId === "downLeft15" ||
+          directionId === "downRight15"))) &&
     Boolean(blinkAssetSrc);
 
   const baseImageSrc = useMemo(() => {

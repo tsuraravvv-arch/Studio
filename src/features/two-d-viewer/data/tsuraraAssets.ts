@@ -99,77 +99,121 @@ export const directionalExpressions: Record<
     front: `${expressionBase}/tsurara_front_smile.png`,
     right15: `${directionBase}/tsurara_right15_smile.png`,
     up15: `${directionBase}/tsurara_up15_smile.png`,
-    down15: `${directionBase}/tsurara_down15_smile.png`
+    down15: `${directionBase}/tsurara_down15_smile.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_smile.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_smile_v3.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_smile.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_smile_v2.png`
   },
   embarrassed: {
     left15: `${directionBase}/tsurara_left15_embarrassed.png`,
     front: `${expressionBase}/tsurara_front_embarrassed.png`,
     right15: `${directionBase}/tsurara_right15_embarrassed.png`,
     up15: `${directionBase}/tsurara_up15_embarrassed.png`,
-    down15: `${directionBase}/tsurara_down15_embarrassed.png`
+    down15: `${directionBase}/tsurara_down15_embarrassed.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_embarrassed.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_embarrassed.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_embarrassed.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_embarrassed.png`
   },
   troubled: {
     left15: `${directionBase}/tsurara_left15_troubled.png`,
     front: `${expressionBase}/tsurara_front_troubled.png`,
     right15: `${directionBase}/tsurara_right15_troubled.png`,
     up15: `${directionBase}/tsurara_up15_troubled.png`,
-    down15: `${directionBase}/tsurara_down15_troubled.png`
+    down15: `${directionBase}/tsurara_down15_troubled.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_troubled.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_troubled.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_troubled.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_troubled.png`
   },
   jitome: {
-    left15: `${directionBase}/tsurara_left15_slyeyes.png`,
+    left15: `${directionBase}/tsurara_left15_slyeyes_v5.png`,
     front: `${expressionBase}/tsurara_front_slyeyes.png`,
     right15: `${directionBase}/tsurara_right15_slyeyes.png`,
     up15: `${directionBase}/tsurara_up15_slyeyes.png`,
-    down15: `${directionBase}/tsurara_down15_slyeyes.png`
+    down15: `${directionBase}/tsurara_down15_slyeyes.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_slyeyes_mouth_v9.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_slyeyes_mouth_v11.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_slyeyes_mouth_v11.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_slyeyes_v16.png`
   },
   surprised: {
     left15: `${directionBase}/tsurara_surprised_left15.png`,
     front: `${expressionBase}/tsurara_surprised_front.png`,
     right15: `${directionBase}/tsurara_surprised_right15.png`,
     up15: `${directionBase}/tsurara_surprised_up15.png`,
-    down15: `${directionBase}/tsurara_surprised_down15.png`
+    down15: `${directionBase}/tsurara_surprised_down15.png`,
+    upLeft15: `${directionBase}/tsurara_surprised_up_left15.png`,
+    upRight15: `${directionBase}/tsurara_surprised_up_right15.png`,
+    downLeft15: `${directionBase}/tsurara_surprised_down_left15.png`,
+    downRight15: `${directionBase}/tsurara_surprised_down_right15.png`
   },
   exasperated: {
     left15: `${directionBase}/tsurara_exasperated_left15.png`,
     front: `${expressionBase}/tsurara_exasperated_front.png`,
     right15: `${directionBase}/tsurara_exasperated_right15.png`,
     up15: `${directionBase}/tsurara_exasperated_up15.png`,
-    down15: `${directionBase}/tsurara_exasperated_down15.png`
+    down15: `${directionBase}/tsurara_exasperated_down15.png`,
+    upLeft15: `${directionBase}/tsurara_exasperated_up_left15.png`,
+    upRight15: `${directionBase}/tsurara_exasperated_up_right15.png`,
+    downLeft15: `${directionBase}/tsurara_exasperated_down_left15.png`,
+    downRight15: `${directionBase}/tsurara_exasperated_down_right15.png`
   },
   sleepy: {
     left15: `${directionBase}/tsurara_sleepy_left15.png`,
     front: `${expressionBase}/tsurara_sleepy_front.png`,
     right15: `${directionBase}/tsurara_sleepy_right15.png`,
     up15: `${directionBase}/tsurara_sleepy_up15.png`,
-    down15: `${directionBase}/tsurara_sleepy_down15.png`
+    down15: `${directionBase}/tsurara_sleepy_down15.png`,
+    upLeft15: `${directionBase}/tsurara_sleepy_up_left15.png`,
+    upRight15: `${directionBase}/tsurara_sleepy_up_right15.png`,
+    downLeft15: `${directionBase}/tsurara_sleepy_down_left15.png`,
+    downRight15: `${directionBase}/tsurara_sleepy_down_right15.png`
   },
   depressed: {
     left15: `${directionBase}/tsurara_left15_dejected.png`,
     front: `${expressionBase}/tsurara_front_dejected.png`,
     right15: `${directionBase}/tsurara_right15_dejected.png`,
     up15: `${directionBase}/tsurara_up15_dejected.png`,
-    down15: `${directionBase}/tsurara_down15_dejected.png`
+    down15: `${directionBase}/tsurara_down15_dejected.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_dejected.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_dejected.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_dejected.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_dejected.png`
   },
   relaxed: {
     left15: `${directionBase}/tsurara_left15_relaxed.png`,
     front: `${expressionBase}/tsurara_front_relaxed.png`,
     right15: `${directionBase}/tsurara_right15_relaxed.png`,
     up15: `${directionBase}/tsurara_up15_relaxed.png`,
-    down15: `${directionBase}/tsurara_down15_relaxed.png`
+    down15: `${directionBase}/tsurara_down15_relaxed.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_relaxed.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_relaxed.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_relaxed.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_relaxed.png`
   },
   softSmile: {
     left15: `${directionBase}/tsurara_left15_softsmile.png`,
     front: `${expressionBase}/tsurara_front_softsmile.png`,
     right15: `${directionBase}/tsurara_right15_softsmile.png`,
     up15: `${directionBase}/tsurara_up15_softsmile.png`,
-    down15: `${directionBase}/tsurara_down15_softsmile.png`
+    down15: `${directionBase}/tsurara_down15_softsmile.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_softsmile.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_softsmile.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_softsmile_v2.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_softsmile.png`
   },
   cheerful: {
     left15: `${directionBase}/tsurara_left15_cheerful.png`,
     front: `${expressionBase}/tsurara_front_cheerful.png`,
     right15: `${directionBase}/tsurara_right15_cheerful.png`,
     up15: `${directionBase}/tsurara_up15_cheerful.png`,
-    down15: `${directionBase}/tsurara_down15_cheerful.png`
+    down15: `${directionBase}/tsurara_down15_cheerful.png`,
+    upLeft15: `${directionBase}/tsurara_up_left15_cheerful.png`,
+    upRight15: `${directionBase}/tsurara_up_right15_cheerful.png`,
+    downLeft15: `${directionBase}/tsurara_down_left15_cheerful.png`,
+    downRight15: `${directionBase}/tsurara_down_right15_cheerful.png`
   }
 };
 
@@ -195,28 +239,70 @@ export const fullFrameBlinkDirections: DirectionId[] = [
 export const blinkAssetsByExpression: Partial<
   Record<ExpressionId, Partial<Record<DirectionId, string>>>
 > = {
+  normal: {
+    upLeft15: `${directionBase}/tsurara_blink_up_left15_patch_v8.png`,
+    upRight15: `${directionBase}/tsurara_blink_up_right15_patch_v11.png`,
+    downLeft15: `${directionBase}/tsurara_blink_down_left15_v11.png`,
+    downRight15: `${directionBase}/tsurara_blink_down_right15_patch_v4.png`
+  },
   embarrassed: {
     left15: `${directionBase}/tsurara_blink_embarrassed_left15.png`,
     front: `${expressionBase}/tsurara_blink_embarrassed_front.png`,
     right15: `${directionBase}/tsurara_blink_embarrassed_right15.png`,
-    up15: `${directionBase}/tsurara_blink_embarrassed_up15.png`,
-    down15: `${directionBase}/tsurara_blink_embarrassed_down15.png`
+    up15: `${directionBase}/tsurara_blink_embarrassed_up15_patch_v5.png`,
+    down15: `${directionBase}/tsurara_blink_embarrassed_down15_patch_v5.png`,
+    upLeft15: `${directionBase}/tsurara_blink_up_left15_embarrassed_patch_v5.png`,
+    upRight15: `${directionBase}/tsurara_blink_up_right15_embarrassed_patch_v12.png`,
+    downLeft15: `${directionBase}/tsurara_blink_down_left15_embarrassed_patch_v5.png`,
+    downRight15: `${directionBase}/tsurara_blink_down_right15_embarrassed_patch_v6.png`
   },
   smile: {
     left15: `${directionBase}/tsurara_blink_smile_left15.png`,
     front: `${expressionBase}/tsurara_blink_smile_front.png`,
-    right15: `${directionBase}/tsurara_blink_smile_right15.png`
+    right15: `${directionBase}/tsurara_blink_smile_right15.png`,
+    upLeft15: `${directionBase}/tsurara_blink_up_left15_smile_patch_v8.png`,
+    upRight15: `${directionBase}/tsurara_blink_up_right15_smile_patch_v8.png`,
+    downLeft15: `${directionBase}/tsurara_blink_down_left15_smile_patch_v8.png`,
+    downRight15: `${directionBase}/tsurara_blink_down_right15_smile_patch_v9.png`
   },
   softSmile: {
     left15: `${directionBase}/tsurara_blink_softsmile_left15.png`,
     front: `${expressionBase}/tsurara_blink_softsmile_front.png`,
-    right15: `${directionBase}/tsurara_blink_softsmile_right15.png`
+    right15: `${directionBase}/tsurara_blink_softsmile_right15.png`,
+    upLeft15: `${directionBase}/tsurara_blink_up_left15_softsmile.png`,
+    upRight15: `${directionBase}/tsurara_blink_up_right15_softsmile.png`,
+    downLeft15: `${directionBase}/tsurara_blink_down_left15_softsmile.png`,
+    downRight15: `${directionBase}/tsurara_blink_down_right15_softsmile.png`
+  },
+  troubled: {
+    upLeft15: `${directionBase}/tsurara_blink_up_left15_troubled_patch_v10.png`,
+    upRight15: `${directionBase}/tsurara_blink_up_right15_troubled_patch_v9.png`,
+    downLeft15: `${directionBase}/tsurara_blink_down_left15_troubled_patch_v3.png`,
+    downRight15: `${directionBase}/tsurara_blink_down_right15_troubled_patch_v15.png`
+  },
+  jitome: {
+    left15: `${directionBase}/tsurara_blink_left15_slyeyes_patch_v5.png`,
+    upLeft15: `${directionBase}/tsurara_blink_jitome_up_left15_local_patch_v16.png`,
+    upRight15: `${directionBase}/tsurara_blink_jitome_up_right15_local_patch_v16.png`,
+    down15: `${directionBase}/tsurara_blink_jitome_down15_local_patch_v16.png`,
+    downLeft15: `${directionBase}/tsurara_blink_jitome_down_left15_local_patch_v16.png`,
+    downRight15: `${directionBase}/tsurara_blink_jitome_down_right15_local_patch_v16.png`
   },
   surprised: {
     left15: `${directionBase}/tsurara_blink_surprised_left15.png`,
     front: `${expressionBase}/tsurara_blink_surprised_front.png`,
     right15: `${directionBase}/tsurara_blink_surprised_right15.png`,
-    up15: `${directionBase}/tsurara_blink_surprised_up15.png`
+    up15: `${directionBase}/tsurara_blink_surprised_up15_v2.png`,
+    upLeft15: `${directionBase}/tsurara_blink_surprised_up_left15.png`,
+    upRight15: `${directionBase}/tsurara_blink_surprised_up_right15.png`,
+    downLeft15: `${directionBase}/tsurara_blink_surprised_down_left15.png`,
+    downRight15: `${directionBase}/tsurara_blink_surprised_down_right15.png`
+  },
+  exasperated: {
+    upLeft15: `${directionBase}/tsurara_blink_exasperated_up_left15.png`,
+    upRight15: `${directionBase}/tsurara_blink_exasperated_up_right15.png`,
+    downLeft15: `${directionBase}/tsurara_blink_exasperated_down_left15.png`,
+    downRight15: `${directionBase}/tsurara_blink_exasperated_down_right15.png`
   },
   depressed: {
     left15: `${directionBase}/tsurara_blink_depressed_left15.png`,
@@ -355,6 +441,32 @@ export const overlayRegions: {
 export const blinkOverlayRegionsByExpression: Partial<
   Record<ExpressionId, Partial<Record<DirectionId, OverlayRegion>>>
 > = {
+  normal: {
+    upLeft15: {
+      xRatio: 0.49,
+      yRatio: 0.27,
+      widthRatio: 0.24,
+      heightRatio: 0.15
+    },
+    upRight15: {
+      xRatio: 0.555,
+      yRatio: 0.27,
+      widthRatio: 0.24,
+      heightRatio: 0.15
+    },
+    downLeft15: {
+      xRatio: 0.465,
+      yRatio: 0.33,
+      widthRatio: 0.24,
+      heightRatio: 0.14
+    },
+    downRight15: {
+      xRatio: 0.545,
+      yRatio: 0.33,
+      widthRatio: 0.24,
+      heightRatio: 0.14
+    }
+  },
   embarrassed: {
     front: {
       xRatio: 0.536,
@@ -369,16 +481,66 @@ export const blinkOverlayRegionsByExpression: Partial<
       heightRatio: 0.0698
     },
     up15: {
-      xRatio: 0.558,
-      yRatio: 0.302,
-      widthRatio: 0.123,
-      heightRatio: 0.078
+      xRatio: 0.452,
+      yRatio: 0.257,
+      widthRatio: 0.261,
+      heightRatio: 0.122
     },
     down15: {
-      xRatio: 0.558,
-      yRatio: 0.392,
-      widthRatio: 0.123,
-      heightRatio: 0.055
+      xRatio: 0.443,
+      yRatio: 0.319,
+      widthRatio: 0.272,
+      heightRatio: 0.121
+    },
+    upLeft15: {
+      xRatio: 0.454,
+      yRatio: 0.267,
+      widthRatio: 0.257,
+      heightRatio: 0.122
+    },
+    upRight15: {
+      xRatio: 0.555,
+      yRatio: 0.267,
+      widthRatio: 0.224,
+      heightRatio: 0.116
+    },
+    downLeft15: {
+      xRatio: 0.424,
+      yRatio: 0.34,
+      widthRatio: 0.253,
+      heightRatio: 0.105
+    },
+    downRight15: {
+      xRatio: 0.566,
+      yRatio: 0.331,
+      widthRatio: 0.213,
+      heightRatio: 0.108
+    }
+  },
+  troubled: {
+    upLeft15: {
+      xRatio: 0.47,
+      yRatio: 0.26,
+      widthRatio: 0.215,
+      heightRatio: 0.127
+    },
+    upRight15: {
+      xRatio: 0.622,
+      yRatio: 0.271,
+      widthRatio: 0.122,
+      heightRatio: 0.116
+    },
+    downLeft15: {
+      xRatio: 0.413,
+      yRatio: 0.35,
+      widthRatio: 0.262,
+      heightRatio: 0.088
+    },
+    downRight15: {
+      xRatio: 0.622,
+      yRatio: 0.325,
+      widthRatio: 0.124,
+      heightRatio: 0.113
     }
   },
   smile: {
@@ -393,6 +555,30 @@ export const blinkOverlayRegionsByExpression: Partial<
       yRatio: 0.314,
       widthRatio: 0.117,
       heightRatio: 0.08
+    },
+    upLeft15: {
+      xRatio: 0.429,
+      yRatio: 0.278,
+      widthRatio: 0.276,
+      heightRatio: 0.115
+    },
+    upRight15: {
+      xRatio: 0.502,
+      yRatio: 0.273,
+      widthRatio: 0.268,
+      heightRatio: 0.112
+    },
+    downLeft15: {
+      xRatio: 0.416,
+      yRatio: 0.354,
+      widthRatio: 0.246,
+      heightRatio: 0.081
+    },
+    downRight15: {
+      xRatio: 0.502,
+      yRatio: 0.309,
+      widthRatio: 0.287,
+      heightRatio: 0.13
     }
   },
   softSmile: {
@@ -416,13 +602,41 @@ export const blinkOverlayRegionsByExpression: Partial<
     }
   },
   jitome: {
+    left15: {
+      xRatio: 0.385,
+      yRatio: 0.302,
+      widthRatio: 0.207,
+      heightRatio: 0.107
+    },
+    upLeft15: {
+      xRatio: 0.463,
+      yRatio: 0.31,
+      widthRatio: 0.193,
+      heightRatio: 0.07
+    },
+    upRight15: {
+      xRatio: 0.54,
+      yRatio: 0.31,
+      widthRatio: 0.196,
+      heightRatio: 0.072
+    },
     down15: {
-      xRatio: 0.572,
-      yRatio: 0.392,
-      widthRatio: 0.085,
-      heightRatio: 0.036,
-      xOffsetRatio: -0.025,
-      yOffsetRatio: 0.006
+      xRatio: 0.455,
+      yRatio: 0.372,
+      widthRatio: 0.21,
+      heightRatio: 0.074
+    },
+    downLeft15: {
+      xRatio: 0.435,
+      yRatio: 0.372,
+      widthRatio: 0.207,
+      heightRatio: 0.074
+    },
+    downRight15: {
+      xRatio: 0.546,
+      yRatio: 0.354,
+      widthRatio: 0.212,
+      heightRatio: 0.077
     }
   },
   surprised: {
