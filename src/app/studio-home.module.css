@@ -1,0 +1,106 @@
+.page { --ink: #21457c; --muted: #60799d; --blue: #4288dc; background: #fff; color: var(--ink); font-family: Arial, "Yu Gothic", sans-serif; overflow: clip; }
+.page a { text-decoration: none; }
+.page a:focus-visible { outline: 3px solid #73a9ec; outline-offset: 6px; }
+.header { min-height: 88px; max-width: 1280px; margin: auto; padding: 20px 40px; display: flex; align-items: center; justify-content: flex-start; gap: 72px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); font: 26px Georgia, serif; white-space: nowrap; }
+.brand small { display: block; margin-top: 5px; font: 11px Arial, sans-serif; color: #6885ac; letter-spacing: .035em; }
+.header nav { display: flex; gap: 36px; font-size: 14px; }
+.header nav a { position: relative; padding: 10px 0; }
+.header nav a[aria-current]::after { content: ""; position: absolute; height: 2px; background: #65a2e8; bottom: -10px; left: 0; right: 0; }
+.hero { position: relative; overflow: hidden; background: linear-gradient(110deg,#fff 5%,#f8f9ff 45%,#f2f3fc 100%); }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg,transparent 38%,#ffffff90 39%,transparent 42%,transparent 68%,#ffffff90 69%,transparent 73%); }
+.hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 95px; background: linear-gradient(transparent,#fff); pointer-events: none; }
+.heroInner { position: relative; max-width: 1280px; min-height: 620px; margin: auto; padding: 110px 40px 100px; }
+.heroCopy { position: relative; z-index: 2; width: 54%; }
+.eyebrow { font-size: 12px; letter-spacing: .17em; color: #6488b6; line-height: 1.6; margin: 0 0 22px; }
+.hero h1 { margin: 0; font: 48px/1.7 "Yu Mincho", Georgia, serif; letter-spacing: .035em; }
+.hero h1 span { color: #477db9; }
+.description { margin-top: 28px; font-size: 16px; line-height: 2; color: var(--muted); }
+.primaryLink { display: inline-flex; align-items: center; gap: 36px; margin-top: 30px; background: linear-gradient(115deg,#397bd4,#64b2e2); border-radius: 40px; padding: 16px 27px; color: #fff; font-size: 14px; box-shadow: 0 6px 18px #5688cc25; transition: transform .2s,box-shadow .2s; }
+.primaryLink svg { width: 22px; height: 22px; }
+.primaryLink:hover { transform: translateY(-3px); box-shadow: 0 10px 25px #5688cc35; }
+.tools { max-width: 1280px; margin: auto; padding: 70px 40px 90px; scroll-margin-top: 30px; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 35px; }
+.sectionHeading .eyebrow { margin-bottom: 14px; }
+.sectionHeading h2 { margin: 0; font: 43px/1.2 Georgia,serif; letter-spacing: -.025em; }
+.sectionHeading h2 span { display: block; font: 15px/1.8 "Yu Mincho",Georgia,serif; letter-spacing: .08em; margin-top: 10px; }
+.sectionHeading > p { font-size: 14px; line-height: 1.9; color: var(--muted); }
+.feature { display: grid; grid-template-columns: 1.15fr 1fr; background: #fff; border: 1px solid #e0e9f8; border-radius: 22px; overflow: hidden; box-shadow: 0 8px 30px #507ca008; transition: box-shadow .25s,border-color .25s; }
+.feature:hover { box-shadow: 0 15px 40px #507ca01a; border-color: #b9d1f0; }
+.featureVisual { position: relative; min-height: 490px; padding: 70px 42px 55px; background: radial-gradient(ellipse at 30% 65%,#edf3fc,transparent 75%),#fbfcff; display: flex; align-items: center; }
+.visualLabel { position: absolute; left: 28px; top: 26px; font-size: 10px; letter-spacing: .16em; color: #7591b6; }
+.slices { display: grid; width: 100%; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; transform: rotate(-9deg); transition: transform .3s; }
+.feature:hover .slices { transform: rotate(-6deg) translateY(-3px); }
+.slice { background: #fff; border-radius: 6px; padding: 4px 4px 20px; position: relative; box-shadow: 0 10px 24px #4e648223; }
+.slice:nth-child(2) { transform: translateY(-10px); }
+.slice:nth-child(4) { transform: translateY(10px); }
+.slice > div { position: relative; aspect-ratio: 1/3; overflow: hidden; border-radius: 3px; }
+.slice img { position: absolute; width: 400%; max-width: none; height: 100%; top: 0; }
+.slice > span { position: absolute; bottom: 5px; left: 8px; font: 9px Georgia,serif; color: #7f91ad; }
+.featureCopy { padding: 55px 45px; display: flex; flex-direction: column; align-items: start; }
+.toolCategory { display: flex; align-items: center; gap: 9px; font-size: 11px; letter-spacing: .12em; color: #6b87af; margin-bottom: 25px; }
+.toolCategory > span:first-child { width: 6px; height: 6px; border-radius: 50%; background: #6ca7e6; }
+.available { font-size: 11px; letter-spacing: .04em; border-left: 1px solid #dce5f3; padding-left: 12px; margin-left: 4px; }
+.feature h3 { font: 44px/1.08 Georgia,serif; letter-spacing: -.035em; margin: 0 0 22px; }
+.toolLead { font-size: 17px; font-family: "Yu Mincho",Georgia,serif; margin-bottom: 14px; }
+.toolDescription { font-size: 16px; line-height: 2; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; padding: 0; list-style: none; }
+.tags li { padding: 5px 9px; border-radius: 5px; color: #6884ac; background: #f4f8fe; font-size: 11px; }
+.openTool { width: 100%; display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: #3477ca; padding-top: 20px; margin-top: auto; border-top: 1px solid #e5ecf7; }
+.openTool svg { width: 26px; height: 26px; transition: transform .2s; }
+.feature:hover .openTool svg { transform: translateX(5px); }
+.footer { border-top: 1px solid #e3ebf8; padding: 34px max(40px,calc((100% - 1200px)/2)); display: flex; gap: 30px; justify-content: space-between; align-items: center; background: #fff; }
+.footer p { font-family: "Yu Mincho",Georgia,serif; font-size: 14px; letter-spacing: .06em; color: #7187a7; }
+.footer > small { font-size: 11px; color: #8297b3; }
+@media (max-width:1000px) {
+  .hero h1 { font-size: 37px; }
+  .featureCopy { padding: 40px 30px; }
+  .featureVisual { padding: 60px 30px; }
+  .feature h3 { font-size: 38px; }
+  .footer p { display: none; }
+}
+@media (max-width:700px) {
+  .header { padding: 19px 22px; min-height: 80px; }
+  .brand { font-size: 22px; gap: 8px; }
+  .brand small { font-size: 9px; }
+  .header nav { gap: 18px; font-size: 12px; }
+  .heroInner { min-height: 0; padding: 45px 24px 30px; }
+  .heroCopy { width: 100%; }
+  .eyebrow { font-size: 10px; letter-spacing: .11em; }
+  .hero h1 { font-size: clamp(27px,7.2vw,40px); }
+  .description { font-size: 14px; }
+  .primaryLink { font-size: 13px; margin-top: 22px; padding: 14px 24px; }
+  .tools { padding: 50px 20px 55px; }
+  .sectionHeading { display: block; margin-bottom: 25px; }
+  .sectionHeading h2 { font-size: 37px; }
+  .sectionHeading > p { margin-top: 18px; font-size: 13px; }
+  .feature { grid-template-columns: 1fr; border-radius: 16px; }
+  .featureVisual { min-height: 360px; padding: 65px 30px 42px; }
+  .featureCopy { padding: 30px 25px; }
+  .feature h3 { font-size: 40px; }
+  .toolCategory { margin-bottom: 20px; }
+  .footer { flex-wrap: wrap; justify-content: center; padding: 28px 22px; gap: 23px; }
+  .footer > small { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .page a,.slices,.openTool svg { transition: none; }
+}
+
+@media (max-width:380px) {
+  .header { flex-wrap: wrap; justify-content: center; gap: 15px; }
+  .header nav { width: 100%; justify-content: center; gap: 35px; }
+}
+
+/* The illustration belongs to the full-width hero, outside the text container. */
+.heroArt { position: absolute; inset: 0 0 0 auto; width: 58%; pointer-events: none; }
+.portrait { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; mix-blend-mode: multiply; mask-image: linear-gradient(to right,transparent,black 18%); }
+.hero::after { z-index: 1; }
+@media (min-width:701px) and (max-width:1000px) {
+  .heroCopy { width: 62%; }
+  .heroArt { width: 56%; }
+}
+@media (max-width:700px) {
+  .header { justify-content: space-between; gap: 20px; }
+  .heroArt { position: relative; width: 100%; height: clamp(390px,110vw,580px); }
+  .portrait { object-fit: cover; object-position: center top; mask-image: linear-gradient(to bottom,transparent,black 7%,black 85%,transparent); }
+}

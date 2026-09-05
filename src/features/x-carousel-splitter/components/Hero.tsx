@@ -32,7 +32,7 @@ export function Hero() {
                     height={1086}
                     sizes="(max-width: 639px) 360px, 640px"
                     preload
-                    src="/assets/tsurara/carousel-hero.png"
+                    src={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/assets/tsurara/carousel-hero.png"}
                     style={{ left: String(-index * 100) + "%" }}
                   />
                 </div>

@@ -1,55 +1,71 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import styles from "./studio-home.module.css";
 
-const tools = [
-  {
-    title: "つらら 2D Viewer",
-    description: "表情、まばたき、口パク、左右15度の向き差分を確認するための制作ビューアです。",
-    href: "/tools/two-d-viewer",
-    status: "MVP"
-  },
-  {
-    title: "X Carousel Splitter",
-    description: "横長画像を、Xのカルーセル投稿向けに2枚・4枚へブラウザ内だけで分割できるツールです。",
-    href: "/tools/x-carousel-splitter",
-    status: "公開中"
-  }
-];
+export const metadata: Metadata = {
+  title: "Tsurara Studio — Create, Explore, and Inspire.",
+  description: "氷洞つららのクリエイティブスタジオ。イラストや写真をもっと楽しむ、ブラウザで使える制作ツール。",
+};
+
+function Arrow({ className }: { className?: string }) {
+  return <svg className={className} aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>;
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7fafb] px-6 py-8 text-[#243241]">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
-        <header className="flex flex-col gap-3 border-b border-[#d9e4e7] pb-6">
-          <p className="text-sm font-bold text-[#26677a]">Tsurara Studio</p>
-          <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
-            制作用ワークスペース
-          </h1>
-          <p className="max-w-2xl text-sm leading-7 text-[#657987]">
-            氷洞つららの制作素材と確認ツールをまとめるローカルスタジオです。
-          </p>
-        </header>
+    <main className={styles.page}>
+      <header className={styles.header}>
+        <Link className={styles.brand} href="/" aria-label="Tsurara Studio ホーム">
+          <span>Tsurara Studio<small>Create, Explore, and Inspire.</small></span>
+        </Link>
+        <nav aria-label="サイト内ナビゲーション">
+          <Link href="/" aria-current="page">Home</Link>
+          <a href="#tools">Tools</a>
+        </nav>
+      </header>
 
-        <section className="grid gap-4 sm:grid-cols-2">
-          {tools.map((tool) => (
-            <Link
-              className="group rounded-lg border border-[#d9e4e7] bg-white p-5 shadow-[0_18px_44px_rgba(59,88,98,0.10)] transition hover:-translate-y-0.5 hover:border-[#8faab2]"
-              href={tool.href}
-              key={tool.href}
-            >
-              <div className="mb-4 inline-flex rounded-md bg-[#e6f4f7] px-2.5 py-1 text-xs font-bold text-[#26677a]">
-                {tool.status}
-              </div>
-              <h2 className="text-xl font-bold text-[#1f3442]">{tool.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-[#657987]">
-                {tool.description}
-              </p>
-              <span className="mt-5 inline-flex text-sm font-bold text-[#26677a]">
-                開く
-              </span>
-            </Link>
-          ))}
-        </section>
-      </div>
+      <section className={styles.hero} aria-labelledby="studio-title">
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>A LITTLE INSPIRATION, EVERY DAY</p>
+            <h1 id="studio-title">つくるよろこびを、<br /><span>もっと自由に。</span></h1>
+            <p className={styles.description}>お気に入りの1枚から、新しい表現へ。<br />創作を楽しむための、ちいさな道具箱。</p>
+            <a className={styles.primaryLink} href="#tools">ツールを見つける<Arrow /></a>
+          </div>
+        </div>
+          <div className={styles.heroArt}>
+            <Image src={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/assets/tsurara/studio-welcome.png"} alt="笑顔で手を振る氷洞つらら" width={1086} height={1448} sizes="(max-width: 700px) 100vw, 58vw" preload className={styles.portrait} />
+          </div>
+      </section>
+
+      <section className={styles.tools} id="tools" aria-labelledby="tools-title">
+        <div className={styles.sectionHeading}>
+          <div><p className={styles.eyebrow}>MADE FOR YOUR CREATIVITY</p><h2 id="tools-title">Tools<span>創作を、もう一歩先へ。</span></h2></div>
+          <p>イラストや写真を楽しむための、<br />ブラウザで使えるツール。</p>
+        </div>
+        <Link className={styles.feature} href="/tools/x-carousel-splitter">
+          <div className={styles.featureVisual} aria-hidden="true">
+            <span className={styles.visualLabel}>ONE IMAGE. MORE POSSIBILITIES.</span>
+            <div className={styles.slices}>
+              {[0, 1, 2, 3].map((index) => <div className={styles.slice} key={index}><div><Image src={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/assets/tsurara/carousel-hero.png"} alt="" width={1448} height={1086} sizes="(max-width: 700px) 360px, 600px" style={{ left: String(-index * 100) + "%" }} /></div><span>0{index + 1}</span></div>)}
+            </div>
+          </div>
+          <div className={styles.featureCopy}>
+            <p className={styles.toolCategory}><span />IMAGE TOOL <span className={styles.available}>公開中</span></p>
+            <h3>X Carousel<br />Splitter</h3>
+            <p className={styles.toolLead}>1枚の魅力を、つながる4枚に。</p>
+            <p className={styles.toolDescription}>横長のイラストや写真を、X投稿用に2枚・4枚へ。構図を調整して、PNGで保存できます。</p>
+            <ul className={styles.tags}><li>2分割 / 4分割</li><li>PNG保存</li><li>ブラウザで完結</li></ul>
+            <span className={styles.openTool}>ツールを開く<Arrow /></span>
+          </div>
+        </Link>
+      </section>
+
+      <footer className={styles.footer}>
+        <p>つくるよろこびを、ずっと。</p>
+        <small>© Tsurara Studio</small>
+      </footer>
     </main>
   );
 }
