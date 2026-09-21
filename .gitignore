@@ -16,6 +16,13 @@
 # next.js
 /.next/
 /out/
+/public/assets/hero/*
+!/public/assets/hero/tools/
+/public/assets/hero/tools/*
+!/public/assets/hero/tools/crop-studio-hero.png
+/public/assets/cards/
+/public/assets/ui/
+/public/assets/community/
 
 # production
 /build

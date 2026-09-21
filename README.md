@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tsurara Studio
+
+Studioトップは Idea Lab / Tarot / Tools / Music のポータルです。
+
+- 開発: `npm run dev`
+- GitHub Pages用の生成: `npm run build:pages`（出力先 `docs/`、ベースパス `/Studio`）
+- 公開ファイルのローカル確認: `node scripts/preview-pages.mjs`
+- Heroの季節変更・コンテンツ追加: [運用ガイド](docs/STUDIO-MAINTENANCE.md)
+- 今回の動作確認: [確認記録](docs/STUDIO-VERIFICATION.md)
+
+以下はNext.jsの基本操作です。
 
 ## Getting Started
 

@@ -5,6 +5,7 @@ const basePath = isGithubPages ? "/Studio" : undefined;
 
 const nextConfig: NextConfig = {
   output: "export",
+  trailingSlash: true,
   basePath,
   assetPrefix: basePath,
   images: {

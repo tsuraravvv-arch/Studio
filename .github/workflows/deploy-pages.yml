@@ -30,14 +30,14 @@ jobs:
       - name: Generate blink crop report
         run: npm run verify:assets:json
       - name: Build
-        run: npm run build
+        run: npm run build:pages
         env:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_BASE_PATH: "/Studio"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./docs
 
   deploy:
     environment:
