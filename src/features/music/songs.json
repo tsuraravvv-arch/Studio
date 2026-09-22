@@ -1,0 +1,74 @@
+[
+  {
+    "id": "s-001",
+    "title": "Tiny spark!!",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-001.png",
+    "audio": "/assets/music/audio/s-001.mp3",
+    "lyrics": "/assets/music/words/s-001.txt",
+    "caption": "/assets/music/words/s-001_caption.txt",
+    "article": "/assets/music/articles/s-001/article.md"
+  },
+  {
+    "id": "s-002",
+    "title": "SnowLight",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-002.png",
+    "audio": "/assets/music/audio/s-002.mp3",
+    "lyrics": "/assets/music/words/s-002.txt",
+    "caption": "/assets/music/words/s-002_caption.txt",
+    "article": "/assets/music/articles/s-002/article.md"
+  },
+  {
+    "id": "s-003",
+    "title": "Delight",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-003.png",
+    "audio": "/assets/music/audio/s-003.mp3",
+    "lyrics": "/assets/music/words/s-003.txt",
+    "caption": "/assets/music/words/s-003_caption.txt",
+    "article": "/assets/music/articles/s-003/article.md"
+  },
+  {
+    "id": "s-004",
+    "title": "だからどうした！",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-004.png",
+    "audio": "/assets/music/audio/s-004.mp3",
+    "lyrics": "/assets/music/words/s-004.txt",
+    "caption": "/assets/music/words/s-004_caption.txt",
+    "article": "/assets/music/articles/s-004/article.md"
+  },
+  {
+    "id": "s-005",
+    "title": "Tranquility",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-005.png",
+    "audio": "/assets/music/audio/s-005.mp3",
+    "lyrics": "/assets/music/words/s-005.txt",
+    "caption": "/assets/music/words/s-005_caption.txt",
+    "article": "/assets/music/articles/s-005/article.md"
+  },
+  {
+    "id": "s-006",
+    "title": "Still Open",
+    "shortDescription": "",
+    "tags": [],
+    "album": "",
+    "cover": "/assets/music/covers/s-006.png",
+    "audio": "/assets/music/audio/s-006.mp3",
+    "lyrics": "/assets/music/words/s-006.txt",
+    "caption": "/assets/music/words/s-006_caption.txt",
+    "article": "/assets/music/articles/s-006/article.md"
+  }
+]

@@ -28,7 +28,7 @@ drip境界は `docs/assets/ui/hero-drip-desktop.svg` と `hero-drip-mobile.svg` 
 - トップのカード: `src/app/page.tsx` の `contents` 配列。5枚目以降も同じカードとauto-fit Gridで追加できます。
 - Header / Footer / Community: `src/features/studio/StudioChrome.tsx`。Communityは指定画像と「動画生成AI研究＆交流コミュニティ」を表示。画像原本は `docs/assets/community/video-ai-community.png`。URL未確定のためリンクなし。決定後は `communityLinks` の項目に `href` を追加。
 - Tools: `src/app/tools/page.tsx`。既存 `/tools/x-carousel-splitter/` への入口。
-- Music: `src/app/music/page.tsx`。準備中の仮ページ（プレイヤーなし）。
+- Music: `src/app/music/page.tsx`。6曲の再生一覧と `/music/[id]/` 詳細。楽曲更新は `MUSIC-MAINTENANCE.md` を参照。
 - Idea Labは同一タブ。Tarotは `noopener noreferrer` 付きの新規タブ。
 
 既存のX Carousel Splitterと2D Viewerの実装は維持しています。末尾スラッシュ付きの `index.html` 書き出しで、GitHub Pages上の直接アクセスにも対応します。

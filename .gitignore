@@ -52,3 +52,4 @@ next-env.d.ts
 # incoming Tsurara asset packs are local staging files
 /public/assets/tsurara/incoming/*
 !/public/assets/tsurara/incoming/README.md
+/public/assets/music/
