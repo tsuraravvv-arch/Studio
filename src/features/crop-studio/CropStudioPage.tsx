@@ -66,6 +66,13 @@ export function CropStudioPage() {
       applySize({ width: 1200, height: Math.round(1200 * h / w) });
     } else applySize(size);
   }
+  function swapRatio() {
+    if (invalidSize) return;
+    const [width, height] = ratio.split(":");
+    if (width === height) return;
+    setRatio(`${height}:${width}`);
+    applySize({ width: size.height, height: size.width });
+  }
   function editSize(axis: "width" | "height", value: string) {
     const next = { ...draft, [axis]: value };
     if (mode === "ratio") {
@@ -209,7 +216,13 @@ export function CropStudioPage() {
             <h2><span className="xcs-step">2</span> 出力サイズを選ぶ</h2>
             <label>サイズの指定方法<select aria-label="サイズの指定方法" value={mode} onChange={e => changeMode(e.target.value as Mode)}><option value="template">サービス用テンプレート</option><option value="ratio">比率指定</option><option value="custom">カスタム解像度</option></select></label>
             {mode === "template" && <label>テンプレート<select aria-label="テンプレート" value={presetId} onChange={e => { setPresetId(e.target.value); applySize(CROP_PRESETS.find(p => p.id === e.target.value)!); }}>{CROP_PRESETS.map(p => <option key={p.id} value={p.id}>{p.name}（{p.width} × {p.height}）</option>)}</select></label>}
-            {mode === "ratio" && <label>比率<select aria-label="比率" value={ratio} onChange={e => { setRatio(e.target.value); const [w, h] = e.target.value.split(":").map(Number); applySize({ width: 1200, height: Math.round(1200 * h / w) }); }}>{CROP_RATIOS.map(([w, h]) => <option key={`${w}:${h}`}>{w}:{h}</option>)}</select></label>}
+            {mode === "ratio" && <>
+              <label>比率<select aria-label="比率" value={ratio} onChange={e => { setRatio(e.target.value); const [w, h] = e.target.value.split(":").map(Number); applySize({ width: 1200, height: Math.round(1200 * h / w) }); }}>
+                {CROP_RATIOS.map(([w, h]) => <option key={`${w}:${h}`}>{w}:{h}</option>)}
+                {!CROP_RATIOS.some(([w, h]) => `${w}:${h}` === ratio) && <option value={ratio}>{ratio}</option>}
+              </select></label>
+              <div className={styles.buttons}><button type="button" disabled={invalidSize} onClick={swapRatio}>縦横入れ替え</button></div>
+            </>}
             {mode !== "template" && <div className={styles.dimensions}>
               <label>幅 px<input type="number" min="1" max="8192" step="1" value={draft.width} aria-invalid={invalidSize} aria-describedby={invalidSize ? "crop-size-error" : undefined} onChange={e => editSize("width", e.target.value)} /></label>
               <label>高さ px<input type="number" min="1" max="8192" step="1" value={draft.height} readOnly={mode === "ratio"} aria-invalid={invalidSize} onChange={e => editSize("height", e.target.value)} /></label>
