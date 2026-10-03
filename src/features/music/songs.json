@@ -70,5 +70,17 @@
     "lyrics": "/assets/music/words/s-006.txt",
     "caption": "/assets/music/words/s-006_caption.txt",
     "article": "/assets/music/articles/s-006/article.md"
+  },
+  {
+    "id": "s-007",
+    "title": "氷原のバラッド",
+    "shortDescription": "リュートで弾き語るファンタジー世界を表現した楽曲です",
+    "tags": ["ファンタジー", "弾き語り"],
+    "album": "",
+    "cover": "/assets/music/covers/s-007.png",
+    "audio": "/assets/music/audio/s-007.mp3",
+    "lyrics": "/assets/music/words/s-007.txt",
+    "caption": "/assets/music/words/s-007_caption.txt",
+    "article": "/assets/music/articles/s-007/article.md"
   }
 ]

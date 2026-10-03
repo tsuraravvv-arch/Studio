@@ -38,7 +38,7 @@ export function MusicPlayer({songs}:{songs:Song[]}){
  <p className={styles.error} role="status">{error}</p>
  <div className={styles.rows}>{songs.map((song,index)=>{const duration=durations[song.id]??song.duration;const position=active===song.id?time:0;return <article key={song.id} className={styles.row} data-playing={active===song.id&&playing}>
  <span className={styles.number}>{String(index+1).padStart(2,"0")}</span><Image className={styles.cover} src={base+song.cover} alt={`${song.title} カバー`} width={90} height={90} sizes="90px"/>
- <div className={styles.info}><h3>{song.title}</h3>{song.shortDescription&&<p>{song.shortDescription}</p>}{song.tags.length>0&&<ul className={styles.tags}>{song.tags.map(tag=><li key={tag}>{tag}</li>)}</ul>}<span className={styles.songId}>{song.id}</span></div>
+ <div className={styles.info}><h3>{song.title}</h3><span className={styles.songId}>{song.id}</span>{song.tags.length>0&&<ul className={styles.tags}>{song.tags.map(tag=><li key={tag}>{tag}</li>)}</ul>}</div>
  {song.album&&<span className={styles.album}>{song.album}</span>}
  <input className={styles.seek} type="range" min="0" max={duration||1} step="0.01" value={Math.min(position,duration||0)} disabled={!duration} aria-label={`${song.title}の再生位置`} aria-valuetext={`${formatTime(position)} / ${formatTime(Math.round(duration))}`} style={{"--progress":`${duration?Math.min(100,position/duration*100):0}%`} as CSSProperties} onChange={e=>seek(song,Number(e.target.value))}/>
  <div className={styles.playback}><span className={styles.duration}><span>{formatTime(position)}</span> / {formatTime(Math.round(duration))}</span><div className={styles.buttons}>

@@ -4,3 +4,12 @@
 @media(min-width:701px) and (max-width:1050px){.row{gap:10px}.info{flex-basis:145px;min-width:110px}.info h3{font-size:18px}.seek{min-width:65px;flex-basis:80px}.links{gap:9px;padding-left:10px}.playback{gap:8px}.cover{width:64px;height:64px}.buttons{gap:4px}}
 @media(max-width:700px){.row{gap:10px 12px}.info{min-width:0}.seek{grid-column:1 / -1;margin:4px 0;height:4px;min-width:0}.playback{border-top:0;padding-top:0}.links{padding-left:0;gap:20px}.listActions{gap:10px}.articleContent{padding:20px}.articleContent>h2{font-size:26px}.duration{text-align:left}.volumePanel{width:200px}}
 .volumePanel input{appearance:none;height:4px;border-radius:10px}.volumePanel input::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:#779ebc;border:2px solid white;box-shadow:0 0 0 1px #b3c9da}.volumePanel input::-moz-range-thumb{width:9px;height:9px;border-radius:50%;background:#779ebc;border:2px solid white;box-shadow:0 0 0 1px #b3c9da}
+/* Reading typography shared by article dialogs and legacy detail pages. */
+.article{max-width:640px;margin-inline:auto;line-height:2.15}
+.article h1,.article h2{font-family:var(--font-studio-heading),var(--font-studio-japanese),serif;line-height:1.6;margin:1.5em 0 .8em}
+.article h1:first-child{margin-top:0}
+.article h2{font-size:21px}
+.article p{margin:1.4em 0;white-space:pre-line}
+.article .emphasis{border-left:1px solid #8eafc6;margin:2.6em 0;padding:10px 0 10px 24px;color:#51768f;font-size:15px;line-height:2.35;letter-spacing:.035em}
+.article .emphasis p{margin:0}
+@media(max-width:700px){.article{font-size:13px;line-height:2.1}.article .emphasis{padding-left:18px;font-size:14px;margin-block:2.2em}}

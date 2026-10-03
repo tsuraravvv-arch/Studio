@@ -48,3 +48,17 @@ Musicも既存のprepare-hero.mjsでdocs/assetsからpublic/assetsへコピー�
 - localStorageキー: tsurara-studio.music.volume。volume/muted/previousのみ保存。useSyncExternalStoreでSSRとの整合性と別タブの設定変更に対応。保存不可でもメモリ上で操作できます。
 - 追加ソース: MasterVolume.tsx / useMasterVolume.ts / PlayerIcon.tsx / MusicArticle.tsx。MusicPlayer.tsx、music.module.css、music/page.tsxを更新。
 - 実操作確認: 再生中シークの自動進行・クリック・ドラッグ、Pause中シーク、Stop=0、曲末と再開始、紹介/歌詞を開いても継続、フォーカス復帰、音量40%→mute0%→解除40%、曲切替・再読み込み後40%維持。PC1440×1000、Mobile390×844、横はみ出しなし、Console Error/Warningなし。build:pages/TypeScript/対象ESLint成功。
+## 本番原稿と詩的な強調ブロック
+
+s-001 / s-003は完成原稿、s-002 / s-004 / s-005 / s-006は準備中です。article.mdが掲載原稿の正本です。本文を要約せず、改行も表示に反映します。
+
+専用記法（前後は空行、開始・終了記号は独立した行）:
+
+```markdown
+:::emphasis
+小さな火花がひとつ灯って、それが少しずつ周りへ広がっていく\
+そしていつか、大きな歌になって誰かのところまで届いていく
+:::
+```
+
+react-markdown + remark-directiveでemphasisコンテナを専用divに変換します。music.module.cssの.emphasisが細い青の縦線、余白、広い行間を付けます。blockquoteや水平線ではありません。Dialogと互換詳細ページはMusicArticleを共用します。コードブロック内の記法は変換されません。
