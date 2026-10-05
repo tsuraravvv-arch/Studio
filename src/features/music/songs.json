@@ -82,5 +82,17 @@
     "lyrics": "/assets/music/words/s-007.txt",
     "caption": "/assets/music/words/s-007_caption.txt",
     "article": "/assets/music/articles/s-007/article.md"
+  },
+  {
+    "id": "s-008",
+    "title": "炎砂のミラージュ",
+    "shortDescription": "",
+    "tags": ["ファンタジー", "フォークロック", "民族音楽"],
+    "album": "",
+    "cover": "/assets/music/covers/s-008.png",
+    "audio": "/assets/music/audio/s-008.mp3",
+    "lyrics": "/assets/music/words/s-008.txt",
+    "caption": "/assets/music/words/s-008_caption.txt",
+    "article": "/assets/music/articles/s-008/article.md"
   }
 ]
