@@ -94,5 +94,17 @@
     "lyrics": "/assets/music/words/s-008.txt",
     "caption": "/assets/music/words/s-008_caption.txt",
     "article": "/assets/music/articles/s-008/article.md"
+  },
+  {
+    "id": "s-009",
+    "title": "暁のresonance",
+    "shortDescription": "",
+    "tags": ["ポップロック", "バトル", "アニメOP"],
+    "album": "",
+    "cover": "/assets/music/covers/s-009.png",
+    "audio": "/assets/music/audio/s-009.mp3",
+    "lyrics": "/assets/music/words/s-009.txt",
+    "caption": "/assets/music/words/s-009_caption.txt",
+    "article": "/assets/music/articles/s-009/article.md"
   }
 ]
