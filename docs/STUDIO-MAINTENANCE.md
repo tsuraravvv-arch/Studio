@@ -1,5 +1,16 @@
 # Tsurara Studio の更新
 
+## 冬Hero「冬晴れ、はじまりの朝」（2026-11-05）
+
+- テーマ名: `winter-morning`。原画: `docs/assets/hero/home/hero-winter-morning.png`、1586×992px、1,824,711 bytes。添付原画を無加工で保持し、自動コピーでpublicへ反映。約1.82MBのため今回は別の圧縮画像は作成していません。
+- 見出し: 「澄んだ朝に、」「新しいひらめき。」、英語: `Fresh ideas, clear skies.`。フォントは従来のZen Old Mincho / Playfair Display Italic。
+- PCのobject-position: `50% 15%`。顔・頭頂の余白を確保し、左の空にコピーを表示。PC用ベールなし。
+- 700px以下のobject-position: `78% 0%`。コピー領域と画像位置は固定。背景`#F3F6F7`から154〜205pxで透明になる縦ベール。文字色`#3C5260`。
+- 追加依頼により、冬の下端は滴状から雪の丘を思わせる浅い非対称カーブへ変更。`heroTheme.boundary: "snow"`が`docs/assets/ui/hero-snow-{desktop,mobile}.svg`を選択。`"drip"`で従来の形に戻せます。ハロウィン原画・既存drip SVGは保持。
+- Hero高さ、コピー領域、マスク領域210px / 140pxと1px重なり、Contents余白、共通UIは維持。生成物は`npm run build:pages`のみで更新。
+- ローカル確認: 320 / 375 / 390 / 700 / 701 / 1024 / 1440 / 1920px。2行見出し、顔・前髪・頭頂、英語コピー、境界を確認。Console Errorなし。reduced-motionの既存CSSは変更なし（OS設定切替による確認は未実施）。
+- `npm run lint`と`npm run build:pages`成功。Push・マージ・デプロイは未実施。
+
 ## 公開構成
 
 編集元は `src/app` / `src/features/studio`。`npm run build:pages` が既存の Next.js 静的書き出しを `/Studio` ベースパスで生成し、`docs/` にコピーします。GitHub Actions も `docs/` を公開します。生成HTML/CSS/JSを直接編集しないでください。

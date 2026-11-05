@@ -7,7 +7,7 @@ const japanese = Zen_Old_Mincho({ weight: "500", preload: false, display: "swap"
 const english = Playfair_Display({ subsets: ["latin"], weight: "400", style: "italic", display: "swap", variable: "--font-hero-english" });
 export function SeasonalHero() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const maskAssets = { "--drip-desktop": `url("${base}/assets/ui/hero-drip-desktop.svg")`, "--drip-mobile": `url("${base}/assets/ui/hero-drip-mobile.svg")` } as CSSProperties;
+  const maskAssets = { "--drip-desktop": `url("${base}/assets/ui/hero-${heroTheme.boundary}-desktop.svg")`, "--drip-mobile": `url("${base}/assets/ui/hero-${heroTheme.boundary}-mobile.svg")` } as CSSProperties;
   return <section className={`${styles.hero} ${japanese.variable} ${english.variable}`} style={maskAssets} data-theme={heroTheme.name} aria-labelledby="studio-title">
     <Image className={styles.image} src={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + heroTheme.image} alt={heroTheme.alt} width={heroTheme.width} height={heroTheme.height} sizes="100vw" preload />
     <div className={styles.veil} />

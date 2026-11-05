@@ -8,6 +8,7 @@
 .copy p { font-family: var(--hero-sub-font, Georgia, serif); font-size: clamp(18px, 1.5vw, 23px); font-style: italic; letter-spacing: .055em; margin-top: 22px; animation: copyIn .85s .22s both; }
 /* SEASONAL THEME: colors, typography and image crop never affect Studio UI. */
 .hero[data-theme="halloween"] { --hero-font: var(--font-hero-japanese), "Yu Mincho", serif; --hero-sub-font: var(--font-hero-english), Georgia, serif; --hero-ink: #443454; --hero-background: #ede5f5; --hero-position: center 36%; --hero-veil: linear-gradient(90deg, #f5edf6bf 0%, #f5edf689 29%, #f5edf600 53%); }
+.hero[data-theme="winter-morning"] { --hero-font: var(--font-hero-japanese), "Yu Mincho", serif; --hero-sub-font: var(--font-hero-english), Georgia, serif; --hero-ink: #3C5260; --hero-background: #F3F6F7; --hero-position: 50% 15%; --hero-veil: none; }
 @keyframes imageIn { from { opacity: .5; } to { opacity: 1; } }
 @keyframes copyIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 700px) {
@@ -18,9 +19,12 @@
   .copy p { margin-top: 12px; font-size: 18px; }
   .hero[data-theme="halloween"] { --hero-position: 73% center; --hero-veil: linear-gradient(180deg, #ede5f5 0px, #ede5f5 154px, #ede5f500 257px); }
 }
+@media (max-width: 700px) {
+  .hero[data-theme="winter-morning"] { --hero-position: 78% 0%; --hero-veil: linear-gradient(180deg, #F3F6F7 0px, #F3F6F7 154px, #F3F6F700 205px); }
+}
 @media (prefers-reduced-motion: reduce) { .image, .copy h1, .copy p { animation: none; } }
 
-/* Permanent Studio silhouette: mask the actual image, veil and background together.
+/* Fixed mask geometry; theme selects the silhouette. Mask image, veil and background together.
    Opaque upper layer overlaps the drip SVG by 1px to avoid a seam. */
 .hero { --drip-height: 210px; mask-image: linear-gradient(#000, #000), var(--drip-desktop); mask-size: 100% calc(100% - var(--drip-height) + 1px), 100% var(--drip-height); mask-position: top, bottom; mask-repeat: no-repeat; }
 @media (max-width: 700px) { .hero { --drip-height: 140px; mask-image: linear-gradient(#000, #000), var(--drip-mobile); } }
