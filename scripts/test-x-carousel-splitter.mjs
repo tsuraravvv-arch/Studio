@@ -13,7 +13,7 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(`${process.env.TEST_BASE_URL || 'http://127.0.0.1:3000'}/tools/x-carousel-splitter/`);
   const fixture = await page.evaluate(() => {
-    const c = document.createElement('canvas'); c.width = 3840; c.height = 2160;
+    const c = document.createElement('canvas'); c.width = 1920; c.height = 1080;
     const ctx = c.getContext('2d');
     for (let x = 0; x < c.width; x++) {
       ctx.fillStyle = `rgb(${x % 256},${Math.floor(x / 256)},123)`;
@@ -25,7 +25,7 @@ try {
   const split = page.getByRole('button', { name: '分割する', exact: true });
   await split.waitFor();
   for (let count = 2; count <= 20; count++) {
-    await page.getByLabel('分割枚数', { exact: true }).selectOption(String(count));
+    await page.getByLabel('分割枚数', { exact: true }).fill(String(count));
     assert.equal(await page.locator('.xcs-guide-line').count(), count - 1);
     await split.click();
     await page.waitForFunction(n => document.querySelectorAll('.xcs-results figure').length === n, count);
@@ -40,12 +40,12 @@ try {
           const worldX = offset + x;
           if (data[x * 4] !== worldX % 256 || data[x * 4 + 1] !== Math.floor(worldX / 256) || data[x * 4 + 2] !== 123 || data[x * 4 + 3] !== 255) throw new Error(`Pixel mismatch at ${worldX}`);
         }
-        if (img.naturalHeight !== 2160) throw new Error('Wrong height');
+        if (img.naturalHeight !== 1080) throw new Error('Wrong height');
         offset += c.width;
       }
       return { width: offset, widths };
     });
-    assert.equal(result.width, 3840);
+    assert.equal(result.width, 1920);
     assert.ok(Math.max(...result.widths) - Math.min(...result.widths) <= 1);
   }
   const downloadPromise = page.waitForEvent('download');

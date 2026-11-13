@@ -14,7 +14,7 @@ function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   });
 }
 
-/** Renders the full 3840x2160 composite, then slices it into `splitCount`
+/** Renders the full 1920x1080 composite, then slices it into `splitCount`
  * near-equal-width panels using shared integer boundaries so the preview and the exported files always match. */
 export async function splitImage(
   image: HTMLImageElement,

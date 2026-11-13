@@ -24,7 +24,7 @@ globalThis.document = {
 };
 for (let count = 2; count <= 20; count++) {
   draws.length = 0;
-  const panels = await splitImage({}, 3840, 2160, { scale: 1, offsetX: 0, offsetY: 0 }, count, getBasename('つらら.test.png'));
+  const panels = await splitImage({}, 1920, 1080, { scale: 1, offsetX: 0, offsetY: 0 }, count, getBasename('つらら.test.png'));
   assert.equal(panels.length, count);
   let boundary = 0;
   panels.forEach((panel, i) => {
@@ -32,16 +32,16 @@ for (let count = 2; count <= 20; count++) {
     assert.equal(crop[1], boundary);
     assert.equal(crop[3], panel.width);
     assert.equal(crop[7], panel.width);
-    assert.equal(panel.height, 2160);
+    assert.equal(panel.height, 1080);
     assert.ok(Number.isInteger(panel.width));
     assert.equal(panel.fileName, `つらら.test-${String(i + 1).padStart(2, '0')}.png`);
     boundary += panel.width;
     URL.revokeObjectURL(panel.url);
   });
-  assert.equal(boundary, 3840);
+  assert.equal(boundary, 1920);
   assert.ok(Math.max(...panels.map(p => p.width)) - Math.min(...panels.map(p => p.width)) <= 1);
 }
 for (const invalid of [0, 1, 21, 2.5, NaN]) {
-  await assert.rejects(splitImage({}, 3840, 2160, { scale: 1, offsetX: 0, offsetY: 0 }, invalid, 'image'));
+  await assert.rejects(splitImage({}, 1920, 1080, { scale: 1, offsetX: 0, offsetY: 0 }, invalid, 'image'));
 }
-console.log('PASS: all 2–20 crop boundaries cover 3840 pixels without gaps/overlap; dimensions, 01–20 names, invalid counts.');
+console.log('PASS: all 2–20 crop boundaries cover 1920 pixels without gaps/overlap; dimensions, 01–20 names, invalid counts.');

@@ -2,8 +2,8 @@ import type { ImageTransform } from "../types";
 
 /** Canonical output canvas size. All editing math happens in this coordinate
  * space so the on-screen preview and the final exported pixels always match. */
-export const OUTPUT_WIDTH = 3840;
-export const OUTPUT_HEIGHT = 2160;
+export const OUTPUT_WIDTH = 1920;
+export const OUTPUT_HEIGHT = 1080;
 
 /** Zoom is allowed up to this multiple of the "fit / cover" scale. */
 const MAX_ZOOM_MULTIPLIER = 4;

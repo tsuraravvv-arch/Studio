@@ -1,7 +1,7 @@
 "use client";
 
 import { OUTPUT_HEIGHT, OUTPUT_WIDTH } from "../lib/imageMath";
-import { SPLIT_COUNTS, type SplitCount } from "../types";
+import type { SplitCount } from "../types";
 import { CropIcon, DownloadIcon } from "./icons";
 
 type SplitControlsProps = {
@@ -36,21 +36,28 @@ export function SplitControls({
 
       <div className="flex flex-col gap-2">
         <label className="text-xs font-bold text-[#5c7078]" htmlFor="xcs-split-count">分割枚数</label>
-        <select
+        <output htmlFor="xcs-split-count" className="text-lg font-bold text-[#235cb0]">{splitCount}分割</output>
+        <input
           id="xcs-split-count"
-          className="xcs-split-select"
+          className="xcs-split-slider"
+          type="range"
+          min={2}
+          max={20}
+          step={1}
           value={splitCount}
+          aria-valuetext={`${splitCount}分割`}
           disabled={isSplitting}
           onChange={(event) => onSplitCountChange(Number(event.target.value) as SplitCount)}
-        >
-          {SPLIT_COUNTS.map((count) => (
-            <option key={count} value={count}>{count}分割</option>
-          ))}
-        </select>
+        />
+        <div className="flex justify-between text-xs text-[#5c7078]" aria-hidden="true"><span>2枚</span><span>20枚</span></div>
         <p className="text-xs leading-6 text-[#5c7078]">16:9の画像を左から右へ、2〜20枚に縦分割します。</p>
       </div>
 
       <div className="xcs-output-info flex flex-col gap-1.5 text-xs text-[#5c7078]">
+        <div className="flex items-center justify-between">
+          <span className="font-bold">全体サイズ</span>
+          <span>{OUTPUT_WIDTH} × {OUTPUT_HEIGHT}</span>
+        </div>
         <div className="flex items-center justify-between">
           <span className="font-bold">出力サイズ（1枚あたり）</span>
           <span>
