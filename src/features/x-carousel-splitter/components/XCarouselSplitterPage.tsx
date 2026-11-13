@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { downloadAll } from "../lib/download";
 import { getBasename } from "../lib/filename";
 import {
   fitTransform,
@@ -244,6 +245,8 @@ export function XCarouselSplitterPage() {
                 isSplitDisabled={!loadedImage}
                 isSplitting={isSplitting}
                 onSplit={handleSplit}
+                onSaveAll={() => downloadAll(panels)}
+                isSaveDisabled={panels.length === 0}
                 onSplitCountChange={setSplitCount}
                 splitCount={splitCount}
               />

@@ -12,6 +12,10 @@ try {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(`${process.env.TEST_BASE_URL || 'http://127.0.0.1:3000'}/tools/x-carousel-splitter/`);
+  const saveAll = page.getByRole('button', { name: 'すべて保存', exact: true });
+  assert.equal(await saveAll.count(), 1);
+  assert.equal(await saveAll.isDisabled(), true);
+  assert.equal(await page.locator('.xcs-controls .xcs-primary-button + .xcs-save-all-button').count(), 1);
   const fixture = await page.evaluate(() => {
     const c = document.createElement('canvas'); c.width = 1920; c.height = 1080;
     const ctx = c.getContext('2d');
@@ -24,11 +28,13 @@ try {
   await page.locator('input[type=file]').setInputFiles({ name: 'つらら.test.png', mimeType: 'image/png', buffer: Buffer.from(fixture, 'base64') });
   const split = page.getByRole('button', { name: '分割する', exact: true });
   await split.waitFor();
+  assert.equal(await saveAll.isDisabled(), true);
   for (let count = 2; count <= 20; count++) {
     await page.getByLabel('分割枚数', { exact: true }).fill(String(count));
     assert.equal(await page.locator('.xcs-guide-line').count(), count - 1);
     await split.click();
     await page.waitForFunction(n => document.querySelectorAll('.xcs-results figure').length === n, count);
+    assert.equal(await saveAll.isEnabled(), true);
     const result = await page.locator('.xcs-results figure img').evaluateAll(async images => {
       let offset = 0; const widths = [];
       for (const img of images) {

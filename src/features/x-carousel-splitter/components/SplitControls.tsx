@@ -8,6 +8,8 @@ type SplitControlsProps = {
   splitCount: SplitCount;
   onSplitCountChange: (count: SplitCount) => void;
   onSplit: () => void;
+  onSaveAll: () => void;
+  isSaveDisabled: boolean;
   isSplitDisabled: boolean;
   isSplitting: boolean;
   errorMessage: string | null;
@@ -17,6 +19,8 @@ export function SplitControls({
   splitCount,
   onSplitCountChange,
   onSplit,
+  onSaveAll,
+  isSaveDisabled,
   isSplitDisabled,
   isSplitting,
   errorMessage
@@ -84,6 +88,16 @@ export function SplitControls({
             分割する
           </>
         )}
+      </button>
+
+      <button
+        className="xcs-save-all-button"
+        disabled={isSaveDisabled || isSplitting}
+        onClick={onSaveAll}
+        type="button"
+      >
+        <DownloadIcon className="h-4 w-4" />
+        すべて保存
       </button>
 
       {errorMessage ? (

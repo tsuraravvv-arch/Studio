@@ -1,6 +1,6 @@
 "use client";
 
-import { downloadAll, downloadBlobUrl } from "../lib/download";
+import { downloadBlobUrl } from "../lib/download";
 import type { OutputPanel } from "../types";
 import { DownloadIcon, SnowflakeIcon, StarIcon } from "./icons";
 
@@ -25,14 +25,6 @@ export function OutputPreview({ panels }: OutputPreviewProps) {
               分割結果プレビュー
             </h2>
           </div>
-          <button
-            className="xcs-panel-button flex items-center gap-1.5 rounded-lg text-xs"
-            onClick={() => downloadAll(panels)}
-            type="button"
-          >
-            <DownloadIcon className="h-3.5 w-3.5" />
-            すべて保存
-          </button>
         </div>
 
         <p className="mb-4 text-xs leading-6 text-[#5c7078]">左から順に「元画像名-01.png」〜「元画像名-{String(panels.length).padStart(2, "0")}.png」で保存します。一括保存時は、ブラウザで複数ファイルのダウンロードを許可してください。</p>
