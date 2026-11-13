@@ -11,11 +11,6 @@ import {
 import type { ImageTransform, LoadedImage, SplitCount } from "../types";
 import { CropIcon, FitIcon, ResetIcon, ZoomIcon } from "./icons";
 
-const GUIDE_POSITIONS: Record<SplitCount, number[]> = {
-  2: [50],
-  4: [25, 50, 75]
-};
-
 type ImageEditorProps = {
   image: LoadedImage | null;
   transform: ImageTransform;
@@ -202,7 +197,9 @@ export function ImageEditor({
         )}
 
         <div className="xcs-guides" aria-hidden="true">
-          {GUIDE_POSITIONS[splitCount].map((position) => (
+          {Array.from({ length: splitCount - 1 }, (_, index) =>
+            Math.round(((index + 1) * OUTPUT_WIDTH) / splitCount) / OUTPUT_WIDTH * 100
+          ).map((position) => (
             <span
               className="xcs-guide-line"
               key={position}
@@ -213,12 +210,15 @@ export function ImageEditor({
             (panelNumber) => (
               <span
                 className="xcs-guide-number"
-                key={panelNumber}
+                key={String(panelNumber).padStart(2, "0")}
                 style={{
-                  left: `${((panelNumber - 0.5) / splitCount) * 100}%`
+                  left: `${((panelNumber - 0.5) / splitCount) * 100}%`,
+                  top: splitCount > 8 && panelNumber % 2 === 0 ? 34 : 10,
+                  padding: splitCount > 8 ? "2px 1px" : undefined,
+                  fontSize: splitCount > 8 ? 9 : undefined
                 }}
               >
-                {panelNumber}
+                {String(panelNumber).padStart(2, "0")}
               </span>
             )
           )}

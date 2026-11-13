@@ -1,6 +1,6 @@
 import { buildPanelFileName } from "./filename";
 import { drawComposite, OUTPUT_HEIGHT, OUTPUT_WIDTH } from "./imageMath";
-import type { ImageTransform, OutputPanel, SplitCount } from "../types";
+import { SPLIT_COUNTS, type ImageTransform, type OutputPanel, type SplitCount } from "../types";
 
 function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   return new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
 }
 
 /** Renders the full 3840x2160 composite, then slices it into `splitCount`
- * equal-width panels so the preview and the exported files always match. */
+ * near-equal-width panels using shared integer boundaries so the preview and the exported files always match. */
 export async function splitImage(
   image: HTMLImageElement,
   naturalWidth: number,
@@ -24,6 +24,9 @@ export async function splitImage(
   splitCount: SplitCount,
   basename: string
 ): Promise<OutputPanel[]> {
+  if (!SPLIT_COUNTS.includes(splitCount)) {
+    throw new Error("分割枚数は2〜20枚で指定してください。");
+  }
   const composite = document.createElement("canvas");
   composite.width = OUTPUT_WIDTH;
   composite.height = OUTPUT_HEIGHT;
@@ -42,11 +45,13 @@ export async function splitImage(
     OUTPUT_HEIGHT
   );
 
-  const panelWidth = OUTPUT_WIDTH / splitCount;
   const panelHeight = OUTPUT_HEIGHT;
   const panels: OutputPanel[] = [];
 
   for (let i = 0; i < splitCount; i += 1) {
+    const startX = Math.round((i * OUTPUT_WIDTH) / splitCount);
+    const endX = Math.round(((i + 1) * OUTPUT_WIDTH) / splitCount);
+    const panelWidth = endX - startX;
     const panelCanvas = document.createElement("canvas");
     panelCanvas.width = panelWidth;
     panelCanvas.height = panelHeight;
@@ -59,7 +64,7 @@ export async function splitImage(
     panelCtx.imageSmoothingQuality = "high";
     panelCtx.drawImage(
       composite,
-      i * panelWidth,
+      startX,
       0,
       panelWidth,
       panelHeight,

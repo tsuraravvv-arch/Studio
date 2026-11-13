@@ -1,15 +1,14 @@
 "use client";
 
 import { downloadAll, downloadBlobUrl } from "../lib/download";
-import type { OutputPanel, SplitCount } from "../types";
+import type { OutputPanel } from "../types";
 import { DownloadIcon, SnowflakeIcon, StarIcon } from "./icons";
 
 type OutputPreviewProps = {
   panels: OutputPanel[];
-  splitCount: SplitCount;
 };
 
-export function OutputPreview({ panels, splitCount }: OutputPreviewProps) {
+export function OutputPreview({ panels }: OutputPreviewProps) {
   if (panels.length === 0) {
     return null;
   }
@@ -36,32 +35,34 @@ export function OutputPreview({ panels, splitCount }: OutputPreviewProps) {
           </button>
         </div>
 
+        <p className="mb-4 text-xs leading-6 text-[#5c7078]">左から順に「元画像名-01.png」〜「元画像名-{String(panels.length).padStart(2, "0")}.png」で保存します。一括保存時は、ブラウザで複数ファイルのダウンロードを許可してください。</p>
+
         <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch">
           <div
             className={`grid flex-1 gap-4 ${
-              splitCount === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
+              panels.length === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"
             }`}
           >
             {panels.map((panel) => (
               <figure
                 className="flex flex-col overflow-hidden rounded-xl border border-[#e3edf0] bg-[#f9fcfd]"
-                key={panel.index}
+                key={String(panel.index).padStart(2, "0")}
               >
-                <div className="relative">
+                <div className="relative flex h-64 items-center justify-center bg-[#f9fcfd]">
                   <span className="absolute left-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-white/90 text-xs font-extrabold text-[#26677a] shadow-sm">
-                    {panel.index}
+                    {String(panel.index).padStart(2, "0")}
                   </span>
                   {/* eslint-disable-next-line @next/next/no-img-element -- locally generated blob URL, not an optimizable static asset */}
                   <img
-                    alt={`分割結果 ${panel.index}`}
-                    className="w-full object-cover"
+                    alt={`分割結果 ${String(panel.index).padStart(2, "0")}`}
+                    className="h-full w-full object-contain"
                     src={panel.url}
                     style={{ aspectRatio: `${panel.width} / ${panel.height}` }}
                   />
                 </div>
-                <figcaption className="flex items-center justify-between gap-2 p-2.5">
+                <figcaption title={panel.fileName} className="flex items-center justify-between gap-2 p-2.5">
                   <span className="text-xs font-bold text-[#5c7078]">
-                    #{panel.index}
+                    #{String(panel.index).padStart(2, "0")}
                   </span>
                   <button
                     className="xcs-panel-button flex items-center gap-1 rounded-md text-[11px]"

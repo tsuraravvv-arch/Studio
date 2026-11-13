@@ -15,7 +15,7 @@ export function Hero() {
           <h1>X Carousel<br />Splitter<span className="xcs-title-dot">.</span></h1>
           <p className="xcs-hero-subtitle">横長画像を、X投稿用に分割しよう。</p>
           <p className="xcs-hero-description">
-            1枚のイラストや写真から、2枚・4枚の画像へ。<br />
+            1枚のイラストや写真から、2〜20枚の画像へ。<br />
             好きな構図で切り出して、<br className="sm:hidden" />もっと魅力的にシェアしよう。
           </p>
           <span className="xcs-hero-caption">Split your story. Share more moments.</span>

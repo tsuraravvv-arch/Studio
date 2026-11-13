@@ -4,7 +4,7 @@ import { XCarouselSplitterPage } from "../../../features/x-carousel-splitter/com
 export const metadata: Metadata = {
   title: "X Carousel Splitter | Tsurara Studio",
   description:
-    "横長画像を、Xのカルーセル投稿向けに2枚・4枚へブラウザ内だけで分割できる無料ツールです。"
+    "横長画像を、Xのカルーセル投稿向けに2〜20枚へブラウザ内だけで分割できる無料ツールです。"
 };
 
 export default function Page() {

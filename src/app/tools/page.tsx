@@ -12,8 +12,8 @@ export const metadata: Metadata = { title: "Tools | Tsurara Studio", description
 const tools = [{
   id: "x-carousel-splitter", title: "X Carousel Splitter", href: "/tools/x-carousel-splitter/",
   category: "IMAGE TOOL", image: "/assets/tsurara/carousel-hero.png",
-  description: "横長のイラストや写真を、X投稿用に2枚・4枚へ分割できるブラウザツールです。構図や拡大率を調整し、PNGで保存できます。",
-  tags: ["2分割 / 4分割", "PNG保存", "ブラウザで完結"],
+  description: "横長のイラストや写真を、X投稿用に2〜20枚へ分割できるブラウザツールです。構図や拡大率を調整し、PNGで保存できます。",
+  tags: ["2〜20分割", "PNG保存", "ブラウザで完結"],
 }, {
   id: "crop-studio", title: "Crop Studio", href: "/tools/crop-studio/",
   category: "IMAGE TOOL", image: "/assets/hero/tools/crop-studio-hero.png",

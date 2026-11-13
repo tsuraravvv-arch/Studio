@@ -253,10 +253,10 @@ export function XCarouselSplitterPage() {
       </section>
 
       <div className="xcs-result-wrap pb-10">
-        <OutputPreview panels={panels} splitCount={splitCount} />
+        <OutputPreview panels={panels} />
       </div>
 
-      <PostingGuide splitCount={splitCount} />
+      <PostingGuide splitCount={panels.length ? panels.length as SplitCount : splitCount} />
       <SiteFooter />
     </main>
   );

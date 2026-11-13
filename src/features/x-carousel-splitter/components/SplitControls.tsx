@@ -1,13 +1,8 @@
 "use client";
 
 import { OUTPUT_HEIGHT, OUTPUT_WIDTH } from "../lib/imageMath";
-import type { SplitCount } from "../types";
+import { SPLIT_COUNTS, type SplitCount } from "../types";
 import { CropIcon, DownloadIcon } from "./icons";
-
-const SPLIT_OPTIONS: { value: SplitCount; label: string; grid: string }[] = [
-  { value: 2, label: "2分割", grid: "横1 × 縦2" },
-  { value: 4, label: "4分割", grid: "横1 × 縦4" }
-];
 
 type SplitControlsProps = {
   splitCount: SplitCount;
@@ -26,7 +21,9 @@ export function SplitControls({
   isSplitting,
   errorMessage
 }: SplitControlsProps) {
-  const panelWidth = OUTPUT_WIDTH / splitCount;
+  const minWidth = Math.floor(OUTPUT_WIDTH / splitCount);
+  const maxWidth = Math.ceil(OUTPUT_WIDTH / splitCount);
+  const panelWidth = minWidth === maxWidth ? String(minWidth) : `${minWidth}〜${maxWidth}`;
 
   return (
     <div className="xcs-controls flex h-full flex-col gap-6 rounded-2xl border border-[#e3edf0] bg-[#f9fcfd] p-5">
@@ -38,25 +35,19 @@ export function SplitControls({
       </div>
 
       <div className="flex flex-col gap-2">
-        <p className="text-xs font-bold text-[#5c7078]">分割枚数</p>
-        <div className="grid grid-cols-2 gap-2" role="group" aria-label="分割枚数を選択">
-          {SPLIT_OPTIONS.map((option) => (
-            <button
-              className={option.value === splitCount ? "selected" : ""}
-              key={option.value}
-              onClick={() => onSplitCountChange(option.value)}
-              type="button"
-            >
-              <span className="xcs-split-diagram" aria-hidden="true">
-                {Array.from({ length: option.value }, (_, index) => <i key={index} />)}
-              </span>
-              <span className="block text-sm font-extrabold">{option.label}</span>
-              <span className="block text-[11px] font-normal opacity-80">
-                {option.grid}
-              </span>
-            </button>
+        <label className="text-xs font-bold text-[#5c7078]" htmlFor="xcs-split-count">分割枚数</label>
+        <select
+          id="xcs-split-count"
+          className="xcs-split-select"
+          value={splitCount}
+          disabled={isSplitting}
+          onChange={(event) => onSplitCountChange(Number(event.target.value) as SplitCount)}
+        >
+          {SPLIT_COUNTS.map((count) => (
+            <option key={count} value={count}>{count}分割</option>
           ))}
-        </div>
+        </select>
+        <p className="text-xs leading-6 text-[#5c7078]">16:9の画像を左から右へ、2〜20枚に縦分割します。</p>
       </div>
 
       <div className="xcs-output-info flex flex-col gap-1.5 text-xs text-[#5c7078]">
