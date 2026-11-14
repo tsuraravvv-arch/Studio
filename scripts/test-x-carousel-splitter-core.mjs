@@ -28,7 +28,7 @@ for (let count = 2; count <= 20; count++) {
   assert.equal(panels.length, count);
   let boundary = 0;
   panels.forEach((panel, i) => {
-    const crop = draws[i + 1];
+    const crop = draws.slice(-count)[i];
     assert.equal(crop[1], boundary);
     assert.equal(crop[3], panel.width);
     assert.equal(crop[7], panel.width);
@@ -45,3 +45,16 @@ for (const invalid of [0, 1, 21, 2.5, NaN]) {
   await assert.rejects(splitImage({}, 1920, 1080, { scale: 1, offsetX: 0, offsetY: 0 }, invalid, 'image'));
 }
 console.log('PASS: all 2–20 crop boundaries cover 1920 pixels without gaps/overlap; dimensions, 01–20 names, invalid counts.');
+
+const { createSplitPlan } = load('src/features/x-carousel-splitter/lib/composition.ts');
+for (let n = 2; n <= 20; n++) for (const m of [1,2,3,25]) {
+ const plan = createSplitPlan(n,m);
+ assert.equal(plan.length,n);
+ plan.forEach((part,i) => {
+  assert.equal(part.sourceIndex,i % m);
+  assert.equal(part.startX,i ? plan[i-1].endX : 0);
+  assert.equal(part.width,part.endX-part.startX);
+ });
+ assert.equal(plan.at(-1).endX,1920);
+}
+console.log('PASS: cyclic assignments for 1, 2, 3 and 25 sources at every split count.');

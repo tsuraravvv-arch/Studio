@@ -181,3 +181,26 @@
 .xcs-page .xcs-save-all-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; margin-top: -16px; border-radius: 30px; border: 1px solid #b7d2f3; background: #f2f7ff; color: #2f6db9; font-size: 15px; }
 .xcs-page .xcs-save-all-button:hover:not(:disabled) { background: #e5f0ff; border-color: #7eace7; }
 .xcs-page .xcs-save-all-button:disabled { opacity: .48; cursor: not-allowed; transform: none; }
+
+/* Multi-image workflow */
+.xcs-source-help, .xcs-live-preview > p, .xcs-save-help { font-size: 12px; line-height: 1.9; color: #637da4; }
+.xcs-source-list { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.xcs-source-card { border: 1px solid #dce6f7; border-radius: 12px; padding: 6px; background: #fff; min-width: 0; }
+.xcs-source-card.is-selected { border-color: #5b97e5; box-shadow: 0 0 0 2px #e4efff; }
+.xcs-page .xcs-source-select { position: relative; display: block; width: 100%; padding: 0; border: none; background: transparent; text-align: left; overflow: hidden; }
+.xcs-source-select img { width: 100%; height: 90px; object-fit: contain; background: #f5f8ff; border-radius: 7px; }
+.xcs-source-number { position: absolute; top: 4px; left: 4px; background: #fff; border-radius: 20px; padding: 3px 6px; font-size: 11px; }
+.xcs-source-name { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 8px 2px; font-size: 12px; }
+.xcs-source-actions { display: flex; gap: 4px; }
+.xcs-page .xcs-source-actions button { flex: 1; padding: 0 3px; min-height: 40px; font-size: 11px; }
+.xcs-live-preview { display: flex; flex-direction: column; gap: 12px; }
+.xcs-preview-empty { position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: #7c98bd; }
+.xcs-editing-label { margin-bottom: 12px; font-size: 12px; color: #5579ac; overflow-wrap: anywhere; }
+.xcs-upload .xcs-step { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; }
+.xcs-page .xcs-controls { height: auto; }
+.xcs-page .xcs-controls .xcs-primary-button, .xcs-page .xcs-controls .xcs-save-all-button { width: 100%; height: 56px; min-height: 56px; flex: none; }
+.xcs-save-status { margin-top: 22px; font-size: 13px; color: #355b91; line-height: 1.8; }
+.xcs-save-help { margin-top: 10px; }
+@media (max-width:639px) {
+  .xcs-source-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}

@@ -9,6 +9,7 @@ import {
   OUTPUT_WIDTH
 } from "../lib/imageMath";
 import type { ImageTransform, LoadedImage, SplitCount } from "../types";
+import { SplitGuides } from "./SplitGuides";
 import { CropIcon, FitIcon, ResetIcon, ZoomIcon } from "./icons";
 
 type ImageEditorProps = {
@@ -20,6 +21,8 @@ type ImageEditorProps = {
   onFit: () => void;
   onOneToOne: () => void;
   onReset: () => void;
+  applyToAll?: boolean;
+  onApplyToAllChange?: (checked: boolean) => void;
 };
 
 export function ImageEditor({
@@ -30,7 +33,9 @@ export function ImageEditor({
   onZoomTo,
   onFit,
   onOneToOne,
-  onReset
+  onReset,
+  applyToAll = false,
+  onApplyToAllChange
 }: ImageEditorProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -174,6 +179,21 @@ export function ImageEditor({
         </span>
       </div>
 
+      {onApplyToAllChange && (
+        <div className="text-xs leading-6 text-[#5579ac]">
+          <label className="flex min-h-11 cursor-pointer items-center gap-2">
+            <input
+              type="checkbox"
+              checked={applyToAll}
+              onChange={event => onApplyToAllChange(event.target.checked)}
+              className="h-4 w-4 accent-[#4388df]"
+            />
+            すべての画像に適用
+          </label>
+          <p>チェックすると選択中の画像の位置・拡大率を全画像に反映し、その後の操作も連動します。</p>
+        </div>
+      )}
+
       <div
         aria-label="画像編集キャンバス。ドラッグで位置を調整できます。"
         className={`xcs-editor-frame aspect-video ${image ? "has-image" : ""} ${
@@ -196,33 +216,8 @@ export function ImageEditor({
           </div>
         )}
 
-        <div className="xcs-guides" aria-hidden="true">
-          {Array.from({ length: splitCount - 1 }, (_, index) =>
-            Math.round(((index + 1) * OUTPUT_WIDTH) / splitCount) / OUTPUT_WIDTH * 100
-          ).map((position) => (
-            <span
-              className="xcs-guide-line"
-              key={position}
-              style={{ left: `${position}%` }}
-            />
-          ))}
-          {Array.from({ length: splitCount }, (_, index) => index + 1).map(
-            (panelNumber) => (
-              <span
-                className="xcs-guide-number"
-                key={String(panelNumber).padStart(2, "0")}
-                style={{
-                  left: `${((panelNumber - 0.5) / splitCount) * 100}%`,
-                  top: splitCount > 8 && panelNumber % 2 === 0 ? 34 : 10,
-                  padding: splitCount > 8 ? "2px 1px" : undefined,
-                  fontSize: splitCount > 8 ? 9 : undefined
-                }}
-              >
-                {String(panelNumber).padStart(2, "0")}
-              </span>
-            )
-          )}
-        </div>
+        <SplitGuides splitCount={splitCount} />
+
       </div>
 
       {showQualityWarning ? (

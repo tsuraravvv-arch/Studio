@@ -10,11 +10,12 @@ export function downloadBlobUrl(url: string, fileName: string): void {
 /** Triggers sequential downloads with a small stagger — some browsers block
  * or silently drop multiple simultaneous same-tick downloads. */
 export function downloadAll(
-  panels: { url: string; fileName: string }[]
+  panels: { url: string; fileName: string }[],
+  shouldContinue: () => boolean = () => true
 ): void {
   panels.forEach((panel, index) => {
     window.setTimeout(() => {
-      downloadBlobUrl(panel.url, panel.fileName);
+      if (shouldContinue()) downloadBlobUrl(panel.url, panel.fileName);
     }, index * 180);
   });
 }

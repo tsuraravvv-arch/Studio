@@ -26,3 +26,9 @@ export interface OutputPanel {
   height: number;
   fileName: string;
 }
+
+/** Stable identity keeps placement attached to an image when the list moves. */
+export interface CarouselSource extends LoadedImage {
+  id: string;
+  transform: ImageTransform;
+}
